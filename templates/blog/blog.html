@@ -1,0 +1,76 @@
+{% extends 'blog/templateblog.html' %}
+{% load staticfiles %}
+
+{% block script %}
+<!-- If directly use static, will error -->
+<script type="text/javascript" charset="utf-8">
+$(function() { 
+  $(".animate-box").removeClass("fh5co-active");
+  $("div #blog").addClass("fh5co-active"); 
+});
+</script>
+
+<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
+  <div class="container">
+    <div class="fh5co-text-wrap animate-box">
+      <div class="fh5co-intro-text">
+        <h1>Perfection <span>Stems From </span>Persistence</h1>
+      </div>
+    </div>
+  </div>
+  <div class="btn-next animate-box fh5co-learn-more">
+    <a href="#" class="scroll-btn">
+      <span>See the detail</span>
+      <i class="icon-chevron-down"></i>
+    </a>
+  </div>
+</header>
+
+{% endblock %}
+
+{% block body %}
+{% for post in posts %}
+<div class="post">
+  <div class="papertitlecap list-inline text-capitalize">
+    <ul>
+      <li class="titleone">
+        <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
+      </li>
+      <li class="titletwo">
+        {% if post.category %}
+        <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
+          <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+
+  <div class="blogtext">
+    <div class="blogbody">
+      <p>{{ post.text|safe|linebreaks}}</p>
+    </div>
+  </div>
+
+  <a class="pure-button" href="{% url 'detail' pk=post.pk %}">更多>>> </a>
+
+</div>
+{% endfor %}
+{{ posts }}
+<div class="pagination">
+  <span class="step-links">
+    {% if posts.has_previous %}
+    <a href="?page={{ posts.previous_page_number }}">上一页</a>
+    {% endif %}
+    {% for page_number in posts.paginator.page_range %}
+    {% ifequal page_number posts.number %}
+    {{page_number}}
+    {% else %}
+    <a href="?page={{ page_number }}">{{page_number}}</a>
+    {% endifequal %}
+    {% endfor %}
+    {% if posts.has_next %}
+    <a href="?page={{ posts.next_page_number }}">下一页</a>
+    {% endif %}
+  </span>
+</div>
+{% endblock %}

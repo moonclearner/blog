@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="posts">
+  <`0{% if error %}}>
+  <h2 class="post-title">无相关文章和题目</h2>
+  {% else %}
+  {% for post in post_list %}
+  <div class="date">
+    {% if post.published_date %}
+    {{post.published_date|date:'M d,y'}}
+    {% endif %}
+  </div>
+  <h3>
+    <a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a>
+  </h3>
+    <p>
+    <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}"><span class="glyphicon glyphicon-tag"></span>{{post.category|title}}</a>
+    </p>
+    <p>{{post.text|linebreaks|slice:"5"}}</p>
+    <a class="pure-button" href="{% url 'post_detail' pk=post.pk %}">更多>>></a>
+    {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}

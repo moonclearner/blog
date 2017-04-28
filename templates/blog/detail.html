@@ -1,0 +1,86 @@
+{% extends 'blog/template.html' %}
+{% block content %}
+<!-- If directly use static, will error -->
+{% load staticfiles %}
+<script type="text/javascript" charset="utf-8">
+$(function() { 
+  $(".animate-box").removeClass("fh5co-active");
+  $("div #bio").addClass("fh5co-active"); 
+});
+</script>
+<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
+  <div class="container">
+    <div class="fh5co-text-wrap animate-box">
+      <div class="fh5co-intro-text">
+        <h1>Perfection <span>Stems From </span>Persistence</h1>
+      </div>
+    </div>
+  </div>
+  <div class="btn-next animate-box fh5co-learn-more">
+    <a href="#" class="scroll-btn">
+      <span>See the detail</span>
+      <i class="icon-chevron-down"></i>
+    </a>
+  </div>
+</header>
+
+<div class="js-fh5co-waypoint fh5co-project-detail" id="fh5co-main" data-colorbg="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="post">
+          {% if post.published_date %}
+          {{ post.published_date |date:'M d, Y' }}
+          {% else %}
+          <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <a class="btn btn-default" href="{% url 'modification' pk=post.pk %}"><span class="glyphicon
+          glyphicon-pencil"></span>修改</a>
+          <a class="btn btn-default" href="{% url 'remove' pk=post.pk %}"><span class="glyphicon
+          glyphicon-remove"></span>删除</a>
+          {% endif %}
+          <div class="papertitlecap list-inline text-capitalize">
+            <ul>
+              <li class="titleone">
+                <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
+              </li>
+              <li class="titletwo">
+                {% if post.category %}
+                <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
+                  <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+          <div class="blogtext">
+            <div class="blogbody">
+              <p>{{ post.text|safe|linebreaks}}</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="pagination">
+          <span class="step-links">
+            {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">上一页</a>
+            {% endif %}
+            {% for page_number in posts.paginator.page_range %}
+            {% ifequal page_number posts.number %}
+            {{page_number}}
+            {% else %}
+            <a href="?page={{ page_number }}">{{page_number}}</a>
+            {% endifequal %}
+            {% endfor %}
+            {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">下一页</a>
+            {% endif %}
+          </span>
+        </div>
+
+      </div>
+    </div> 
+  </div>
+</div>
+{% endblock %}
