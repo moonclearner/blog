@@ -44,6 +44,7 @@ h1, h2, h3, h4 {
 
 .blogtext{
 	border:1px solid ;
+  border-radius:10px;
 }
 .blogbody{
 width:95%;
@@ -51,26 +52,43 @@ margin: 0 auto;
 }
 
 .papertitlecap{
-height:60px;
+height:50px;
+}
+.papertitlecap ul{
+display:flex;
+justify-content:space-between;
+padding:0;
+}
+.subfooter{
+  margin-bottom:150px;
+}
+.subfooter ul{
+display:flex;
+justify-content:space-between;
+padding:0;
 }
 
-.papertitlecap .titleone{
-font-size:50px;
+.subfooter ul li{
 cursor:auto;
-margin:0 auto;
 padding:0;
 list-style:none;
-
-text-align:center;
 }
-.papertitlecap .titletwo{
+
+.papertitlecap li{
 cursor:auto;
-margin:0 auto;
 padding:0;
-text-align:right;
 list-style:none;
 }
+.papertitlecap .subtitle{
+font-size:40px;
+}
 
+div.pagination{
+  /* display:block; */
+  text-align:center;
+  font-size:20px;
+  width:100%;
+}
 
 html, body {
     height: 100%;
@@ -90,32 +108,36 @@ height: 60px;/*脚部的高度*/ background: #6cf;
 clear:both;
 }
 
+/* writing */
+/* .writing_choice{ */
+/*   height:30px; */
+/* } */
 
-.writingpost textarea{
-	background-color:#222222;
-	color:white;
-	padding:15px;
+.writing_choice ul{
+  padding:0;
 }
 
-.writingpost input{
-	background-color:#222222;
-	color:white;
-	padding:10px;
+.writing_choice ul li{
+  list-style:none;
+  padding:0px;
+cursor:auto;
+display:inline-block;
 }
 
+/* .writing_post label{ */
+/*   text-align:left; */
+/* } */
+
+
+/* login form */
 .container .row .col-md-12 >div#loginform {
-  border:1px solid #222222;
   width:400px;
-  color:red;
   text-align:center;
-  
-}
-.loginform form {
-   display:flex;
-   justify-content:center;
-
+  margin:0 auto;
 }
 
-.loginform form table{
-  margin:0;
+.container .row .col-md-12 >div#loginform button{
+  border-radius:10px;
+  border:2px solid;
+
 }

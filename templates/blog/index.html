@@ -4,120 +4,132 @@
 {% load staticfiles %}
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-  $(".animate-box").removeClass("fh5co-active");
-  $("div #home").addClass("fh5co-active"); 
+	$(".animate-box").removeClass("fh5co-active");
+	$("div #home").addClass("fh5co-active"); 
 });
 </script>
-		<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
+<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
 
-			<div class="container">
-				<div class="fh5co-text-wrap animate-box">
-					<div class="fh5co-intro-text">
-						<h1>I&acute;m a 23 Year Old Postgraduate based <span>in</span> Chongqin</h1>
-						<h1>I&acute;love python <span>because</span> life is short</h1>
-						<h2>Bulit by <a href="#/" target="_blank">moonclearner</a></h2>
-					</div>
-				</div>
+	<div class="container">
+		<div class="fh5co-text-wrap animate-box">
+			<div class="fh5co-intro-text">
+				<h1>I&acute;m a 23 Year Old Postgraduate based <span>in</span> Chongqin</h1>
+				<h1>I&acute;love python <span>because</span> life is short</h1>
+				<h2>Bulit by <a href="{% url 'about_me' %}" target="_blank">moonclearner</a></h2>
 			</div>
-
-			<div class="btn-next animate-box fh5co-learn-more">
-				<a href="#" class="scroll-btn">
-					<span>See my portfolio</span>
-					<i class="icon-chevron-down"></i>
-				</a>
-			</div>
-
-		</header>
+		</div>
+	</div>
+</header>
 
 <!-- paper share -->
 
-		<!-- data-colorbg="#8cc53e"  -->
-		<div class="fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
-			<div class="container">
-				<div class="fh5co-project-inner row">
-					<div class="fh5co-imgs col-md-8 animate-box">
-						<div class="img-holder-1 animate-box">
-              <img src="{% static 'images/work_1_large.jpg' %}" alt="Free HTML5 Bootstrap Template">
-						</div>
-						<div class="img-holder-2 animate-box">
-							<img src="/static/images/work_1_small.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-					</div>
-					<div class="fh5co-text col-md-4 animate-box">
-						<h2>Guide Landing Page</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-					</div>
+<!-- data-colorbg="#8cc53e"  -->
+<div class="fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
+	<div class="container">
+		<div class="fh5co-project-inner row">
+			<div class="fh5co-imgs col-md-8 animate-box">
+				<div class="img-holder-1 animate-box">
+					<img src="{% static 'images/vim.jpg' %}" alt="Free HTML5 Bootstrap Template">
 				</div>
-
+				<!-- <div class="img-holder-2 animate-box"> -->
+				<!--   <img src="{% static 'images/vim_small.jpg' %}" class="img-responsive" alt="Free HTML5 Bootstrap Template"> -->
+				<!-- </div> -->
+			</div>
+			<div class="fh5co-text col-md-4 animate-box">
+				<h2>Vim Page</h2>
+				<p>VIM is known as the editor of God, my favorite editor for programming, taking notes.</p>
+				<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Notes</a></p>
 			</div>
 		</div>
 
-
-    <!-- [> data-colorbg="#FF6138" <] -->
-    <div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
-      <div class="container">
-        <div class="fh5co-project-inner row">
-          <div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
-            <div class="img-holder-1 animate-box">
-              <img src="/static/images/work_2_large.jpg" alt="Free HTML5 Bootstrap Template">
-            </div>
-            <div class="img-holder-2 animate-box">
-              <img src="/static/images/work_2_small.jpg" alt="Free HTML5 Bootstrap Template">
-            </div>
-          </div>
-          <div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
-            <h2>Sprint for Portfolio</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            <p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-          </div>
-        </div>
-
-      </div>
-    </div>
+	</div>
+</div>
 
 
-    <!-- [> data-colorbg="#2d4059" <] -->
-    <div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
-      <div class="container">
-        <div class="fh5co-project-inner row">
-          <div class="fh5co-imgs col-md-8 animate-box">
-            <div class="img-holder-1 animate-box">
-              <img src="/static/images/work_3_large.jpg" alt="Free HTML5 Bootstrap Template">
-            </div>
-            <div class="img-holder-2 animate-box">
-              <img src="/static/images/work_3_small.jpg" alt="Free HTML5 Bootstrap Template">
-            </div>
-          </div>
-          <div class="fh5co-text col-md-4 animate-box">
-            <h2>Display for Business Website</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            <p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- [> data-colorbg="#FF6138" <] -->
+<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
+	<div class="container">
+		<div class="fh5co-project-inner row">
+			<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
+				<div class="img-holder-1 animate-box">
+					<img src="{% static 'images/python.jpg' %}" alt="Free HTML5 Bootstrap Template">
+				</div>
+				<!-- <div class="img-holder-2 animate-box"> -->
+				<!--   <img src="{% static 'images/python_small.jpg' %}" class="img-responsive"  alt="Free HTML5 Bootstrap Template"> -->
+				<!-- </div> -->
+			</div>
+			<div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
+				<h2>Python</h2>
+				<p>Beautiful is better than ugly.
+				Explicit is better than implicit.
+				Simple is better than complex.
+				Complex is better than complicated.
+				Flat is better than nested.
+				Sparse is better than dense.
+				Readability counts.
+				Special cases aren't special enough to break the rules.
+				Although practicality beats purity.
+				Errors should never pass silently.
+				Unless explicitly silenced.
+				In the face of ambiguity, refuse the temptation to guess.
+				There should be one-- and preferably only one --obvious way to do it.
+				Although that way may not be obvious at first unless you're Dutch.
+				Now is better than never.
+				Although never is often better than *right* now.
+				If the implementation is hard to explain, it's a bad idea.
+				If the implementation is easy to explain, it may be a good idea.
+				Namespaces are one honking great idea -- let's do more of those!</p>
+				<p>
+				<a href="work_1.html" class="btn btn-light btn-outline transition">View Notes</a></p>
+			</div>
+		</div>
+
+	</div>
+</div>
 
 
-    <!-- [> data-colorbg="#7bc74d" <] -->
-    <div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
-      <div class="container">
-        <div class="fh5co-project-inner row">
-          <div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
-            <div class="img-holder-1 animate-box">
-              <img src="/static/images/work_4_large.jpg" alt="Free HTML5 Bootstrap Template">
-            </div>
-            <div class="img-holder-2 animate-box">
-              <img src="/static/images/work_4_small.jpg" alt="Free HTML5 Bootstrap Template">
-            </div>
-          </div>
-          <div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
-            <h2>Slant for Creatives</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            <p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-          </div>
-        </div>
+<!-- [> data-colorbg="#2d4059" <] -->
+<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+	<div class="container">
+		<div class="fh5co-project-inner row">
+			<div class="fh5co-imgs col-md-8 animate-box">
+				<div class="img-holder-1 animate-box">
+					<img src="{% static 'images/django.jpg' %}" alt="Free HTML5 Bootstrap Template">
+				</div>
+				<!-- <div class="img-holder-2 animate-box"> -->
+				<!--   <img src="{% static 'images/django_small.jpg' %}" class="img-responsive" alt="Free HTML5 Bootstrap Template"> -->
+				<!-- </div> -->
+			</div>
+			<div class="fh5co-text col-md-4 animate-box">
+				<h2>Django</h2>
+				<p>Django is my first learning Python web background framework</p>
+				<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Notes</a></p>
+			</div>
+		</div>
+	</div>
+</div>
 
-      </div>
-    </div>
-    {% endblock %}
+
+<!-- [> data-colorbg="#7bc74d" <] -->
+<!-- <div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg=""> -->
+<!--   <div class="container"> -->
+<!--     <div class="fh5co-project-inner row"> -->
+<!--       <div class="fh5co-imgs col-md-8 col-md-push-4 animate-box"> -->
+<!--         <div class="img-holder-1 animate-box"> -->
+<!--           <img src="/static/images/work_4_large.jpg" alt="Free HTML5 Bootstrap Template"> -->
+<!--         </div> -->
+<!--         <div class="img-holder-2 animate-box"> -->
+<!--           <img src="/static/images/work_4_small.jpg" alt="Free HTML5 Bootstrap Template"> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--       <div class="fh5co-text col-md-4 col-md-pull-8 animate-box"> -->
+<!--         <h2>Slant for Creatives</h2> -->
+<!--         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
+<!--         <p><a href="work_1.html" class="btn btn-light btn-outline transition">View Notes</a></p> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+
+
+{% endblock %}

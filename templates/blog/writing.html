@@ -10,10 +10,14 @@ $(function() {
 </script>
 {% endblock %}
 {% block body %}
+<div class="writing_choice">
 <ul>
   <li><a href="{% url 'writing' %}">New</a></li>
   <li><a href="{% url 'drafts' %}">Draft</a></li>
 </ul>
+</div>
+<div class="writingform">
+
 <form method="POST" class="post-form">
   {% csrf_token %}
   <div class="writingpost">
@@ -21,4 +25,5 @@ $(function() {
   </div>
   <button type="submit" class="save btn btn-default">Save</button>
 </form>
+</div>
 {% endblock %}

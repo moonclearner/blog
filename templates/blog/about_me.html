@@ -1,4 +1,5 @@
 {% extends 'blog/template.html' %}
+{% load staticfiles %}
 {% block content %}
 <script type="text/javascript" charset="utf-8">
   $(function() { 
@@ -11,15 +12,9 @@
     <div class="fh5co-text-wrap animate-box">
       <div class="fh5co-intro-text">
         <h1>Who Am I <span>&amp;</span> What I do </h1>
-        <h2>Built by<a href="#/" target="_blank">moonclearner</a></h2>
+				<h2>Built by&nbsp<a href="{% url 'about_me' %}">moonclearner</a></h2>
       </div>
     </div>
-  </div>
-  <div class="btn-next animate-box fh5co-learn-more">
-    <a href="#" class="scroll-btn">
-      <span>See the detail</span>
-      <i class="icon-chevron-down"></i>
-    </a>
   </div>
 </header>
 <div class="js-fh5co-waypoint fh5co-project-detail" id="fh5co-main" data-colorbg="">
@@ -31,8 +26,11 @@
             <h3 class="fh5co-section-heading"><span class="fh5co-number">N<sup>o</sup> 1</span> Bio</h3>
           </div>
           <div class="col-md-9">
-            <p class="fh5co-lead">Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns.</p>
-            <p>Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns. Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns.</p>
+						<p>
+            <figure style="text-align:center" class="fh5co-bio-photo"><img src="/static/images/title.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template"></figure>
+						</p>
+            <p class="fh5co-lead">Dai jinajian, online name moonclearner, born in 1994, currently a graduate student at Chongqing University of Posts and Telecommunications, specializing in electronics and communications engineering, like programming and video games.</p>
+            <p>Do What I Wanna Do, And I Can Do Better</p>
           </div>
         </div>
         <div class="row row-bottom-padded-sm animate-box">
@@ -45,8 +43,12 @@
             <h3 class="fh5co-section-heading"><span class="fh5co-number">N<sup>o</sup> 2</span> Experience</h3>
           </div>
           <div class="col-md-9">
-            <p class="fh5co-lead">Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns.</p>
-            <p>Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns. Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns.</p>
+            <p class="fh5co-lead">Research direction of intrusion detection in wireless sensor networks based on machine learning.</p>
+            <p>Vim editor lovers</p>
+            <p>Linux lovers</p>
+						<p>Python lovers</p>
+						<p>Hardware developer</p>
+						<p>Open source advocates:  <a href="https://github.com/moonclearner/blog">Blog source code</a><a href="https://github.com/moonclearner/MarkDown">&nbsp Article markdown share</a></p>
           </div>
         </div>	
         <div class="row animate-box row-bottom-padded-sm">
@@ -56,32 +58,17 @@
           <div class="col-md-9">
             <ul class="fh5co-social fh5co-stack">
               <li>
-                <a href="#"><i class="icon-mail2"></i> Send Email</a>
+                <p><i class="icon-mail2"></i>moonclearner@hotmail.com</p>
               </li>
               <li>
-                <a href="#"><i class="icon-twitter"></i> Twitter</a>
+                <p><i class="icon-qq"></i>718857460</p>
               </li>
               <li>
-                <a href="#"><i class="icon-facebook"></i> Facebook</a>
+                <p><i class="icon-wechat"></i><span><img src="{% static 'images/wechat.jpg' %}" class="img-responsive" alt="Responsive image"></span></p>
               </li>
-              <li>
-                <a href="#"><i class="icon-instagram"></i> Instagram</a>
-              </li>
-              <li>
-                <a href="#"><i class="icon-dribbble"></i> Dribbble</a>
-              </li>
-
             </ul>
           </div>
         </div>
-        <!-- <div class="row animate-box"> -->
-        <!--   <div class="col-md-3"> -->
-        <!--     <h3 class="fh5co-section-heading"><span class="fh5co-number">N<sup>o</sup> 4</span> My Location</h3> -->
-        <!--   </div> -->
-        <!--   <div class="col-md-12"> -->
-        <!--     <div id="fh5co-map"></div> -->
-        <!--   </div> -->
-        <!-- </div> -->
       </div>
     </div>
   </div>

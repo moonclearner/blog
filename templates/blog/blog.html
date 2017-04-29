@@ -33,10 +33,16 @@ $(function() {
 <div class="post">
   <div class="papertitlecap list-inline text-capitalize">
     <ul>
-      <li class="titleone">
+      <li class="subtitle_author">
+        {% if post.author %}
+        <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
+          <span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
+        {% endif %}
+      </li>
+      <li class="subtitle">
         <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
       </li>
-      <li class="titletwo">
+      <li class="subtitle_category">
         {% if post.category %}
         <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
           <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
@@ -47,15 +53,23 @@ $(function() {
 
   <div class="blogtext">
     <div class="blogbody">
-      <p>{{ post.text|safe|linebreaks}}</p>
+      <p>{{ post.text|safe|linebreaks|truncatewords:"50"}}</p>
     </div>
   </div>
+  <div class="subfooter">
+  <ul>
+    <li>
+    <a class="pure-button" href="{% url 'detail' pk=post.pk %}">More details>>> </a>
+    </li>
+    <li>
+          {{ post.published_date |date:'M d, Y' }}
+    </li>
+  </ul>
+  </div>
 
-  <a class="pure-button" href="{% url 'detail' pk=post.pk %}">更多>>> </a>
 
 </div>
 {% endfor %}
-{{ posts }}
 <div class="pagination">
   <span class="step-links">
     {% if posts.has_previous %}
