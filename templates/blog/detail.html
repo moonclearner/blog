@@ -33,27 +33,35 @@ $(function() {
           {% if post.published_date %}
           {{ post.published_date |date:'M d, Y' }}
           {% else %}
-          <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+          <a class="btn btn-default" href="{% url 'publish' pk=post.pk %}">Publish</a>
           {% endif %}
           {% if user.is_authenticated %}
           <a class="btn btn-default" href="{% url 'modification' pk=post.pk %}"><span class="glyphicon
-          glyphicon-pencil"></span>修改</a>
+          glyphicon-pencil"></span>Modify</a>
           <a class="btn btn-default" href="{% url 'remove' pk=post.pk %}"><span class="glyphicon
-          glyphicon-remove"></span>删除</a>
+          glyphicon-remove"></span>Delete</a>
           {% endif %}
+
           <div class="papertitlecap list-inline text-capitalize">
             <ul>
-              <li class="titleone">
+              <li class="subtitle_author">
+                {% if post.author %}
+                <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
+                  <span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
+                {% endif %}
+              </li>
+              <li class="subtitle">
                 <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
               </li>
-              <li class="titletwo">
+              <li class="subtitle_category">
                 {% if post.category %}
-                <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
+                <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
                   <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
                 {% endif %}
               </li>
             </ul>
           </div>
+
           <div class="blogtext">
             <div class="blogbody">
               <p>{{ post.text|safe|linebreaks}}</p>
@@ -61,24 +69,6 @@ $(function() {
           </div>
 
         </div>
-        <div class="pagination">
-          <span class="step-links">
-            {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">上一页</a>
-            {% endif %}
-            {% for page_number in posts.paginator.page_range %}
-            {% ifequal page_number posts.number %}
-            {{page_number}}
-            {% else %}
-            <a href="?page={{ page_number }}">{{page_number}}</a>
-            {% endifequal %}
-            {% endfor %}
-            {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">下一页</a>
-            {% endif %}
-          </span>
-        </div>
-
       </div>
     </div> 
   </div>

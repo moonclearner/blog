@@ -109,24 +109,37 @@ clear:both;
 }
 
 /* writing */
-/* .writing_choice{ */
-/*   height:30px; */
-/* } */
-
-.writing_choice ul{
+.writing_choice{
+  height:40px;
   padding:0;
 }
 
-.writing_choice ul li{
-  list-style:none;
-  padding:0px;
-cursor:auto;
-display:inline-block;
+.writing_choice ul{
+  padding:0;
+  margin:0;
 }
 
-/* .writing_post label{ */
-/*   text-align:left; */
-/* } */
+.container .col-md-12 .writing_choice ul li{
+  list-style:none;
+  padding:0px;
+  margin-right:20px;
+  cursor:auto;
+  display:inline-block;
+}
+
+.container .col-md-12 .writing_choice ul li a{
+  font-size:30px;
+}
+
+.container .col-md-12 .writingform p input {
+border:1px solid;
+border-radius:10px;
+}
+
+.container .col-md-12 .writingform p textarea{
+border:1px solid;
+border-radius:10px;
+}
 
 
 /* login form */

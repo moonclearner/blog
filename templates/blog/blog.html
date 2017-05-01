@@ -35,7 +35,7 @@ $(function() {
     <ul>
       <li class="subtitle_author">
         {% if post.author %}
-        <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
+        <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
           <span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
         {% endif %}
       </li>
@@ -44,7 +44,7 @@ $(function() {
       </li>
       <li class="subtitle_category">
         {% if post.category %}
-        <a class="post-category post-category-js" href="{% url 'search_tag' tag=post.category %}">
+        <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
           <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
         {% endif %}
       </li>
