@@ -4,26 +4,29 @@
 {% block script %}
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-  $(".animate-box").removeClass("fh5co-active");
-  $("div #writing").addClass("fh5co-active"); 
+	$(".animate-box").removeClass("fh5co-active");
+	$("div #writing").addClass("fh5co-active"); 
 });
 </script>
 {% endblock %}
 {% block body %}
 <div class="writing_choice">
-<ul>
-  <li><a href="{% url 'writing' %}">New</a></li>
-  <li><a href="{% url 'drafts' %}">Draft</a></li>
-</ul>
+	<ul>
+		<li><a href="{% url 'writing' %}">New</a></li>
+		<li><a href="{% url 'drafts' %}">Draft</a></li>
+	</ul>
 </div>
+<div class='markdowneditor'>
 <div class="writingform">
 
-<form method="POST" class="post-form">
-  {% csrf_token %}
-  <div class="writingpost">
-    {{form.as_p}}
-  </div>
-  <button type="submit" class="save btn btn-default">Save</button>
-</form>
+	<form method="POST" class="post-form">
+		{% csrf_token %}
+		<div class="writingpost">
+			{{form.as_p}}
+			{{form.category.as_p}}
+		</div>
+		<button type="submit" class="save btn btn-default">Save</button>
+	</form>
+</div>
 </div>
 {% endblock %}

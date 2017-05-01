@@ -2,8 +2,6 @@
 	
 	'use strict';
 
-
-
 	// iPad and iPod detection	
 	var isiPad = function(){
 		return (navigator.platform.indexOf("iPad") != -1);
@@ -190,4 +188,9 @@ $(document).ready(function() {
 		window.location = linkLocation;
 	}
 	
+});
+
+// add markdown attr
+$(function(){
+$(".container .col-md-12 .writingform p textarea").markdown({autofocus:false,savable:false});
 });

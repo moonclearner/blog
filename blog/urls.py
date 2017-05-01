@@ -17,6 +17,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from home import views
 from django.contrib.auth import views as authviews
+from django.contrib.staticfiles.urls import static
+from django.conf import settings
 
 urlpatterns = [
     # attr name for url title name
@@ -37,3 +39,5 @@ urlpatterns = [
     url(r'^work/$', views.work, name='work'),
     url(r'^archives/$', views.archives, name='archives'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

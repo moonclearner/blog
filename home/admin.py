@@ -6,4 +6,12 @@ from models import Category
 
 
 admin.site.register(Article)
-admin.site.register(Category)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'brief', 'created_date', 'image', 'image_tag']
+    #  fields = ('name', 'brief', 'created_date', 'image')
+    #  readonly_fields = ('image_tag',)
+
+
+admin.site.register(Category, CategoryAdmin)

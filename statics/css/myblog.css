@@ -133,12 +133,25 @@ clear:both;
 
 .container .col-md-12 .writingform p input {
 border:1px solid;
-border-radius:10px;
+padding:10px;
+/* border-radius:10px; */
 }
 
-.container .col-md-12 .writingform p textarea{
+.container .col-md-12 .writingform p .md-editor{
 border:1px solid;
-border-radius:10px;
+/* border-radius:10px; */
+}
+
+
+.container .col-md-12 .writingform p .md-editor #id_text {
+	padding:20px;
+}
+
+.container .col-md-12 .writingform .writingpost p .md-editor .md-preview {
+	padding:20px;
+	margin:0;
+	width:100% !important;
+	height:100% !important;
 }
 
 
