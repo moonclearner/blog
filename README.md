@@ -6,3 +6,12 @@
 - django 1.10.5
 - markdown2 2.3.3
 - pygments 2.2.0
+
+## change log
+
+### 2017/5/1 星期一 22:29:08
+- alter admin show image of category
+	![admin list](https://raw.githubusercontent.com/moonclearner/blog/master/markdownimage/alteradmin.png)
+- add markdown editor
+	![markdowneditor](https://raw.githubusercontent.com/moonclearner/blog/master/markdownimage/markdown.png)
+	![markdownprevie](https://raw.githubusercontent.com/moonclearner/blog/master/markdownimage/markdownPreview.png)
