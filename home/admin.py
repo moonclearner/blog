@@ -9,7 +9,7 @@ admin.site.register(Article)
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'brief', 'created_date', 'image', 'image_tag']
+    list_display = ['pk', 'name', 'brief', 'created_date', 'image', 'image_tag']
     #  fields = ('name', 'brief', 'created_date', 'image')
     #  readonly_fields = ('image_tag',)
 

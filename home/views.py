@@ -34,6 +34,7 @@ def blog(request):
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
 
+@login_required
 def detail(request, pk):
     """docstring for post_detail"""
     post = get_object_or_404(Article, pk=pk)
@@ -86,9 +87,34 @@ def modification(request, pk):
     return render(request, 'blog/writing.html', {'form': form})
 
 
+def get_object_or_None(klass, *args, **kwargs):
+    """
+    Uses get() to return an object, or None if the object does not exist.
+    """
+    try:
+        return klass.objects.get(*args, **kwargs)
+    except klass.DoesNotExist:
+        return None
+
+
 def remove(request, pk):
     post = get_object_or_404(Article, pk=pk)
-    # model object has default function delete
+    category = Category.objects.get(name=post.category)
+    lastarticle = get_object_or_None(Article, pk=post.lastarticle)
+    nextarticle = get_object_or_None(Article, pk=post.nextarticle)
+    if lastarticle is not None and nextarticle is not None:
+        lastarticle.nextarticle = nextarticle.pk
+        nextarticle.lastarticle = lastarticle.pk
+        lastarticle.save()
+        nextarticle.save()
+    elif nextarticle is None and lastarticle is not None:
+        lastarticle.nextarticle = None
+        category.newarticle = lastarticle.pk
+        lastarticle.save()
+        category.save()
+    else:
+        category.newarticle = None
+        category.save()
     post.delete()
     return redirect('blog')
 
@@ -143,7 +169,8 @@ def blog_search(request):
 
 def index(request):
     """docstring for index"""
-    return render(request, 'blog/index.html')
+    categories = Category.objects.all()
+    return render(request, 'blog/index.html', {'categories': categories})
 
 
 def work(request):

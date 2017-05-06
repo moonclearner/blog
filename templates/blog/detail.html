@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8">
 $(function() { 
   $(".animate-box").removeClass("fh5co-active");
-  $("div #bio").addClass("fh5co-active"); 
+  $("div #blog").addClass("fh5co-active"); 
 });
 </script>
 <header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
@@ -67,6 +67,17 @@ $(function() {
               <p>{{ post.text|safe|linebreaks}}</p>
             </div>
           </div>
+
+					<div class="detailswitch">
+						{% if post.lastarticle %}
+						<a class="btn btn-default" href="{% url 'detail' pk=post.lastarticle %}" role="button">Last Article</a>
+						{% endif %}
+						{% if post.nextarticle %}
+						<a class="btn btn-default" href="{% url 'detail' pk=post.nextarticle %}" role="button">Next Article</a>
+						{% endif %}
+						
+					</div>
+
 
         </div>
       </div>
