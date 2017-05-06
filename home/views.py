@@ -81,7 +81,7 @@ def modification(request, pk):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('detail', pk=post.pk)
     else:
         form = ArticleForm(instance=post)
     return render(request, 'blog/writing.html', {'form': form})

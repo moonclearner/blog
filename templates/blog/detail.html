@@ -4,69 +4,69 @@
 {% load staticfiles %}
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-  $(".animate-box").removeClass("fh5co-active");
-  $("div #blog").addClass("fh5co-active"); 
+	$(".animate-box").removeClass("fh5co-active");
+	$("div #blog").addClass("fh5co-active"); 
 });
 </script>
 <header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
-  <div class="container">
-    <div class="fh5co-text-wrap animate-box">
-      <div class="fh5co-intro-text">
-        <h1>Perfection <span>Stems From </span>Persistence</h1>
-      </div>
-    </div>
-  </div>
-  <div class="btn-next animate-box fh5co-learn-more">
-    <a href="#" class="scroll-btn">
-      <span>See the detail</span>
-      <i class="icon-chevron-down"></i>
-    </a>
-  </div>
+	<div class="container">
+		<div class="fh5co-text-wrap animate-box">
+			<div class="fh5co-intro-text">
+				<h1>Perfection <span>Stems From </span>Persistence</h1>
+			</div>
+		</div>
+	</div>
+	<div class="btn-next animate-box fh5co-learn-more">
+		<a href="#" class="scroll-btn">
+			<span>See the detail</span>
+			<i class="icon-chevron-down"></i>
+		</a>
+	</div>
 </header>
 
 <div class="js-fh5co-waypoint fh5co-project-detail" id="fh5co-main" data-colorbg="">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
 
-        <div class="post">
-          {% if post.published_date %}
-          {{ post.published_date |date:'M d, Y' }}
-          {% else %}
-          <a class="btn btn-default" href="{% url 'publish' pk=post.pk %}">Publish</a>
-          {% endif %}
-          {% if user.is_authenticated %}
-          <a class="btn btn-default" href="{% url 'modification' pk=post.pk %}"><span class="glyphicon
-          glyphicon-pencil"></span>Modify</a>
-          <a class="btn btn-default" href="{% url 'remove' pk=post.pk %}"><span class="glyphicon
-          glyphicon-remove"></span>Delete</a>
-          {% endif %}
+				<div class="post">
+					{% if post.published_date %}
+					{{ post.published_date |date:'M d, Y' }}
+					{% else %}
+					<a class="btn btn-default" href="{% url 'publish' pk=post.pk %}">Publish</a>
+					{% endif %}
+					{% if user.is_authenticated %}
+					<a class="btn btn-default" href="{% url 'modification' pk=post.pk %}"><span class="glyphicon
+					glyphicon-pencil"></span>Modify</a>
+					<a class="btn btn-default" href="{% url 'remove' pk=post.pk %}"><span class="glyphicon
+					glyphicon-remove"></span>Delete</a>
+					{% endif %}
 
-          <div class="papertitlecap list-inline text-capitalize">
-            <ul>
-              <li class="subtitle_author">
-                {% if post.author %}
-                <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
-                  <span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
-                {% endif %}
-              </li>
-              <li class="subtitle">
-                <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
-              </li>
-              <li class="subtitle_category">
-                {% if post.category %}
-                <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
-                  <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
-                {% endif %}
-              </li>
-            </ul>
-          </div>
+					<div class="papertitlecap list-inline text-capitalize">
+						<ul>
+							<li class="subtitle_author">
+								{% if post.author %}
+								<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
+									<span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
+								{% endif %}
+							</li>
+							<li class="subtitle">
+								<a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
+							</li>
+							<li class="subtitle_category">
+								{% if post.category %}
+								<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
+									<span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
+								{% endif %}
+							</li>
+						</ul>
+					</div>
 
-          <div class="blogtext">
-            <div class="blogbody">
-              <p>{{ post.text|safe|linebreaks}}</p>
-            </div>
-          </div>
+					<div class="blogtext">
+						<div class="blogbody">
+							<p>{{ post.text|safe|linebreaks}}</p>
+						</div>
+					</div>
 
 					<div class="detailswitch">
 						{% if post.lastarticle %}
@@ -75,13 +75,13 @@ $(function() {
 						{% if post.nextarticle %}
 						<a class="btn btn-default" href="{% url 'detail' pk=post.nextarticle %}" role="button">Next Article</a>
 						{% endif %}
-						
+
 					</div>
 
 
-        </div>
-      </div>
-    </div> 
-  </div>
+				</div>
+			</div>
+		</div> 
+	</div>
 </div>
 {% endblock %}
