@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^writing/(?P<pk>[0-9]+)/publish/$', views.publish, name='publish'),
     url(r'^writing/(?P<pk>[0-9]+)/remove/$', views.remove, name='remove'),
     url(r'^condition/(?P<condition>\w+)/(?P<mode>\w+)$', views.search_condition, name='search_condition'),
+    url(r'^uploadmarkdown/$', views.uploadmarkdown, name='uploadmarkdown'),
     url(r'^search/$', views.blog_search, name='search'),
     url(r'^work/$', views.work, name='work'),
     url(r'^archives/$', views.archives, name='archives'),

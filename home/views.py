@@ -175,3 +175,8 @@ def index(request):
 
 def work(request):
     return render(request, 'blog/work.html')
+
+
+def uploadmarkdown(request):
+    pdb.set_trace()
+    return HttpResponse("ok")

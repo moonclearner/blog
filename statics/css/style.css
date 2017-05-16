@@ -982,3 +982,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.markdowneditor .writingform form input,textarea,select{
+	color:black;
+}
+
+
+.md-preview{
+	color:black;
+}
+
+.container .col-md-12 .writingform .md-preview h1{
+	color:black;
+}
+
+.container .col-md-12 .writingform .md-preview h2{
+	color:black;
+}
+
+.container .col-md-12 .writingform .md-preview h4{
+	color:black;
+}
+
+.container .col-md-12 .writingform .md-preview h3{
+	color:black;
+}
+
+.container .col-md-12 .writingform .md-preview h5{
+	color:black;
+}
+
+.container .col-md-12 .writingform .md-preview h6{
+	color:black;
+}
+.blogbody h1,h2,h3,h4,h5,h6{
+	color:white;
+}
+
+.container .col-md-12 .post .blogbody br{
+	display:none;
+}

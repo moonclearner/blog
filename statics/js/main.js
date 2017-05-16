@@ -1,5 +1,5 @@
 ;(function () {
-	
+
 	'use strict';
 
 	// iPad and iPod detection	
@@ -8,10 +8,10 @@
 	};
 
 	var isiPhone = function(){
-	    return (
+		return (
 			(navigator.platform.indexOf("iPhone") != -1) || 
 			(navigator.platform.indexOf("iPod") != -1)
-	    );
+		);
 	};
 
 
@@ -42,34 +42,24 @@
 		});
 	};
 
-	
+
 
 	var styleToggle = function() {
 
-		
+
 		if ( $.cookie('styleCookie') !== undefined ) {
 			if ( $.cookie('styleCookie') === 'style-light.css'  ) { 
-				
+
 				$('.js-style-toggle').attr('data-style', 'light');
 			} else  {
 				$('.js-style-toggle').attr('data-style', 'default');
 			}
 			$('#theme-switch').attr('href', '/static/css/' + $.cookie('styleCookie'));
 		} 
-
-
 		if ( $.cookie('btnActive') !== undefined ) $('.js-style-toggle').addClass($.cookie('btnActive'));
-		
-
-
-
 		// $('.js-style-toggle').on('click', function(){
 		$('body').on('click','.js-style-toggle',function(event){
-
-			
-
 			var data = $('.js-style-toggle').attr('data-style'), style = '', $this = $(this);
-
 			if ( data === 'default') {
 
 				// switch to light
@@ -79,8 +69,6 @@
 				// add class active to button
 				$.cookie('btnActive', 'active', { expires: 365, path: '/'});
 				$this.addClass($.cookie('btnActive'));
-				
-
 			} else {
 				// switch to dark color
 				style = 'style.css';
@@ -100,14 +88,14 @@
 
 			// apply the new style
 			$('#theme-switch').attr('href', '/static/css/' + $.cookie('styleCookie'));
-				
-			
+
+
 			event.preventDefault();
 
 		});
-		
+
 	}
-	
+
 	// Animations
 
 	var contentWayPoint = function() {
@@ -115,12 +103,9 @@
 		$('.animate-box').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-				
 				i++;
-
 				$(this.element).addClass('item-animate');
 				setTimeout(function(){
-
 					$('body .animate-box.item-animate').each(function(k){
 						var el = $(this);
 						setTimeout( function () {
@@ -128,14 +113,14 @@
 							el.removeClass('item-animate');
 						},  k * 200, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '95%' } );
 	};
-	
+
 
 	var moreProjectSlider = function() {
 		$('.flexslider').flexslider({
@@ -146,17 +131,17 @@
 			controlNav: false
 		});
 	}
-	
+
 
 	// Document on load.
 	$(function(){
-		
+
 		gotToNextSection();
 		loaderPage();
 		ScrollNext();
 		moreProjectSlider();
 		styleToggle();
-		
+
 		// Animate
 		contentWayPoint();
 
@@ -170,10 +155,10 @@ $(document).ready(function() {
 
 	$("body").css("display", "none");
 
-    $("body").fadeIn(2000);
-    $("body").stop().animate({
-    	opacity: 1
-    });
+	$("body").fadeIn(2000);
+	$("body").stop().animate({
+		opacity: 1
+	});
 
 
 	$("a.transition").click(function(event){
@@ -183,14 +168,55 @@ $(document).ready(function() {
 		$("body").fadeOut(1000, redirectPage);		
 
 	});
-		
+
 	function redirectPage() {
 		window.location = linkLocation;
 	}
-	
+
 });
 
 // add markdown attr
 $(function(){
-$(".container .col-md-12 .writingform p textarea").markdown({autofocus:false,savable:false});
+Dropzone.autoDiscover = false;
+	$(".container .col-md-12 .writingform p textarea").markdown(
+		{
+			autofocus:true,
+			savable:false,
+			additionalButtons: [
+				[{
+					name: "groupCustom",
+					data: [{
+						name: "cmdBeer",
+						toggle: true,
+						title: "upload",
+						icon: "glyphicon glyphicon-user",
+						callback: function(e){
+							// Replace selection with some drinks
+							var chunk, cursor,
+								selected = e.getSelection(), content = e.getContent(),
+								drinks = ["Heinekken", "Budweiser",
+									"Iron City", "Amstel Light",
+									"Red Stripe", "Smithwicks",
+									"Westvleteren", "Sierra Nevada",
+									"Guinness", "Corona", "Calsberg"],
+								index = Math.floor((Math.random()*10)+1)
+
+							// Give random drink
+							chunk = drinks[index]
+
+							// transform selection and set the cursor into chunked text
+							e.replaceSelection(chunk)
+							cursor = selected.start
+
+							// Set the cursor
+							e.setSelection(cursor,cursor+chunk.length)
+						}
+					}]
+				}]
+			]
+		});
+
 });
+
+
+
