@@ -7,6 +7,15 @@
 - markdown2 2.3.3
 - pygments 2.2.0
 
+## example
+It run on tencent server ubuntu 14.04
+first need init ngnix service(had provided ngnix conf)
+- cd blog/
+- python manage.py makemigrations
+- python manage.py migrate
+- python manage.py createsuperuser
+- uwsgi --ini myweb_uwsgi.ini
+
 ## change log
 
 ### 2017/5/1 星期一 22:29:08
@@ -15,3 +24,7 @@
 - add markdown editor
 	![markdowneditor](https://raw.githubusercontent.com/moonclearner/blog/master/markdownimage/markdown.png)
 	![markdownprevie](https://raw.githubusercontent.com/moonclearner/blog/master/markdownimage/markdownPreview.png)
+
+### 2017/5/16 星期二 21:47:55
+- alter css error
+	markdown writing
