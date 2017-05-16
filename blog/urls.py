@@ -19,6 +19,7 @@ from home import views
 from django.contrib.auth import views as authviews
 from django.contrib.staticfiles.urls import static
 from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     # attr name for url title name
@@ -42,3 +43,4 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()

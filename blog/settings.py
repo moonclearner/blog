@@ -25,7 +25,7 @@ SECRET_KEY = '19!0l!&o2t-jyq4c_(t(c&5)rtul=!2#virhw3y^as1r%gu^57'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['moonclearner.cn', '127.0.0.1']
 
 
 # Application definition
