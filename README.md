@@ -9,6 +9,7 @@
 
 ## example
 It run on tencent server ubuntu 14.04
+my blog site: moonclearner.cn
 first need init ngnix service(had provided ngnix conf)
 - cd blog/
 - python manage.py makemigrations
