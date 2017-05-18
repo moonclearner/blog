@@ -6,6 +6,7 @@
 - django 1.10.5
 - markdown2 2.3.3
 - pygments 2.2.0
+- django-uuslug
 
 ## example
 It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**

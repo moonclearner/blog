@@ -47,7 +47,7 @@ $(function() {
       <li class="subtitle_category">
         {% if post.category %}
         <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
-          <span class="glyphicon glyphicon-tag">{{post.category|title}}</span></a>
+          <span class="glyphicon glyphicon-book">{{post.category|title}}</span></a>
         {% endif %}
       </li>
     </ul>
@@ -55,17 +55,41 @@ $(function() {
 
   <div class="blogtext">
     <div class="blogbody">
-      <p>{{ post.text|safe|linebreaks|truncatewords:"2"}}</p>
+      <p>{{ post.markdowntext|safe|truncatechars_html:300}}</p>
     </div>
   </div>
 
   <div class="subfooter">
     <ul>
       <li>
-        <a class="pure-button" href="{% url 'detail' pk=post.pk %}">More details>>> </a>
+        <span class="glyphicon glyphicon-hand-down">Click:{{post.clicknums}}</span>
+      
+      </li>
+      {% with tags=post.tag.all %}
+      {% if tags %}
+      <li>
+        {% if tags %}
+        <span class="tags">
+          <i class="glyphicon glyphicon-tags"></i>
+          {% for tag in tags %}
+          <a href="{% url 'search_condition' condition=tag mode='tag' %}">{{tag.name}}</a>
+          {% endfor %}
+        </span>
+        {% endif %}
+      </li>
+      {% endif %}
+        {% endwith %}
+      <li>
+        <a class="glyphicon glyphicon-time pure-button" href=""></a>
+        <a class="pure-button" href="{% url 'search_condition' condition=post.published_date|date:'Y_m' mode='times' %}">{{ post.published_date|date:'M' }}</a>
+        <a class="pure-button" href="{% url 'search_condition' condition=post.published_date|date:'Y_m_d' mode='times' %}">{{ post.published_date|date:'d' }}</a>
+        <a class="pure-button" href="{% url 'search_condition' condition=post.published_date.year mode='times' %}">{{ post.published_date|date:'Y' }}</a>
       </li>
       <li>
-        {{ post.published_date |date:'M d, Y' }}
+        <a class="glyphicon glyphicon-edit" href="{% url 'modification' pk=post.pk %}">Edit</a>
+      </li>
+      <li>
+        <a class="glyphicon glyphicon-file pure-button" href="{% url 'detail' pk=post.pk %}">More>>> </a>
       </li>
     </ul>
   </div>

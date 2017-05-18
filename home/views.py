@@ -10,7 +10,6 @@ from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
-import markdown2
 from django.shortcuts import HttpResponse
 import pdb
 
@@ -28,9 +27,8 @@ def blog(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    finally:
-        for i in posts:
-            i.text = markdown2.markdown(i.text, extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"])
+        #  for i in posts:
+        #      i.text = markdown2.markdown(i.text, extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"])
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
 
@@ -38,13 +36,23 @@ def blog(request):
 def detail(request, pk):
     """docstring for post_detail"""
     post = get_object_or_404(Article, pk=pk)
-    post.text = markdown2.markdown(post.text, extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"])
+    #  post.text = markdown2.markdown(post.text, extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"])
+    post.increase_click()
     return render(request, 'blog/detail.html', {'post': post})
 
 
 @login_required
 def writing(request):
     """docstring for post_new"""
+    #  if request.is_ajax()
+    #      form = ArticleForm()
+    #      if request.method == 'POST':
+    #          pdb.set_trace()
+    #          data = json.loads(request.body.decode('utf-8'))
+    #          form.title = data['title']
+    #          form.text = data['text']
+    #          form.author = request.user
+    #          form.save()
     if request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
@@ -126,6 +134,10 @@ def search_condition(request, condition, mode):
         #  postsAll = Article.objects.filter(category__name__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
     elif mode == 'author':
         postsAll = Article.objects.filter(author__username__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
+    elif mode == 'tag':
+        postsAll = Article.objects.filter(tag__name__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
+    elif mode == 'times':
+        postsAll = Article.objects.filter(published_date__year=condition).filter(published_date__isnull=False).order_by('-published_date')
     paginator = Paginator(postsAll, 5)
     page = request.GET.get('page')
     try:
@@ -134,9 +146,6 @@ def search_condition(request, condition, mode):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    finally:
-        for i in posts:
-            i.text = markdown2.markdown(i.text, extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"])
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
 
@@ -175,8 +184,3 @@ def index(request):
 
 def work(request):
     return render(request, 'blog/work.html')
-
-
-def uploadmarkdown(request):
-    pdb.set_trace()
-    return HttpResponse("ok")
