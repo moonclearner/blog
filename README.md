@@ -35,6 +35,10 @@ It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
 - next version
 	- change markdown paser
 	- change pagination use ListView
+### 2017/5/18 星期四 22:05:02
+![pic](https://github.com/moonclearner/blog/blob/master/markdownimage/add%20some%20label.png?raw=true)
+mainly add some function for search article
+change markdown paser method and change model of article
 
 ## license
 WTFPL
