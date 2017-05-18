@@ -29,5 +29,11 @@ It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
 - alter css error
 	markdown writing
 
+### 2017/5/18 星期四 9:41:04
+- version 1.0 finished
+- next version
+	- change markdown paser
+	- change pagination use ListView
+
 ## license
 WTFPL
