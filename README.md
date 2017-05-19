@@ -40,5 +40,12 @@ It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
 mainly add some function for search article
 change markdown paser method and change model of article
 
+### 2017/5/19 星期五 19:43:49
+![pic](https://github.com/moonclearner/blog/blob/master/markdownimage/QQ%E6%88%AA%E5%9B%BE20170519154814.png?raw=true)
+- add real time show markdown when writing markdown
+- change writing css to bootstrap
+- next target: add Rss function
+
+
 ## license
 WTFPL
