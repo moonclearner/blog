@@ -47,7 +47,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
-  margin: 1.5em 0 1.5em 0;
 }
 
 
@@ -231,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-nav {
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   z-index: 99;
 }

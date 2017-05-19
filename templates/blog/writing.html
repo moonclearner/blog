@@ -1,35 +1,103 @@
-{% extends 'blog/templateblog.html' %}
+{% extends 'blog/template.html' %}
 <!-- If directly use static, will error -->
 {% load staticfiles %}
-{% block script %}
+
+{% block content %}
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-  $(".animate-box").removeClass("fh5co-active");
-  $("div #writing").addClass("fh5co-active"); 
+	$(".animate-box").removeClass("fh5co-active");
+	$("div #writing").addClass("fh5co-active"); 
 });
 </script>
-{% endblock %}
-{% block body %}
-<div class="writing_choice">
-  <ul>
-    <li><a href="{% url 'writing' %}">New</a></li>
-    <li><a href="{% url 'drafts' %}">Draft</a></li>
-  </ul>
+<div class="writing_body">
+	<div class="writing_choice">
+		<ul>
+			<li><a href="{% url 'writing' %}">New</a></li>
+			<li><a href="{% url 'drafts' %}">Draft</a></li>
+		</ul>
+	</div>
+
+	<div class='markdowneditor'>
+		<div class="writingform">
+			<form method="POST" class="post-form">
+				{% csrf_token %}
+				<div class="writingpost">
+					{{form.as_p}}
+				</div>
+				<div class="form-group">
+					<label for="exampleInputFile">File input</label>
+					<input type="file" id="exampleInputFile" onchange="uploadmark(this)">
+					<p class="help-block">请输入utf-8编码格式文件</p>
+				</div>
+
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<div id="id_previewmarkdown" class="form-control">
+		<div class="preview_text">
+		</div>
+	</div>
+	<div id="clearboth">
+	</div>
+
+
 </div>
+<script type="text/javascript" charset="utf-8">
 
+$.ajaxSetup({
+	data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+});
+$(function(){
+	$.post(window.location.path, {'text': $('#id_text').val()}, function(ret){
+		$('#id_previewmarkdown .preview_text').html(ret);
+	});
+	$('#id_text').bind('input propertychange', function() {  
+		$.post(window.location.path, {'text': $('#id_text').val()}, function(ret){
+			$('#id_previewmarkdown .preview_text').html(ret);
+		})
+	});  
+});
+</script>
 
-<div class='markdowneditor'>
-  <div class="writingform">
+<script type="text/javascript" charset="utf-8">
 
-    <form method="POST" class="post-form">
-      {% csrf_token %}
-      <div class="writingpost">
-        {{form.as_p}}
-        {{form.category.as_p}}
-      </div>
-      <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-  </div>
-</div>
+$.ajaxSetup({
+	data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+});
+
+function uploadmark(input) {
+	if (window.FileReader) {
+		var file = input.files[0];
+		filename = file.name.split(".")[0];
+		var reader = new FileReader();
+		reader.onload = function() {
+			$("#id_text").text(this.result)
+			$.post({% url 'uploadmarkdown' %}, {'text': this.result}, function(ret){
+		$('#id_previewmarkdown .preview_text').html(ret);
+	});
+		}
+		reader.readAsText(file, ["UTF-8",]);
+	} 
+	else if (typeof window.ActiveXObject != 'undefined'){
+		var xmlDoc; 
+		xmlDoc = new ActiveXObject("Microsoft.XMLDOM"); 
+		xmlDoc.async = false; 
+		xmlDoc.load(input.value); 
+		alert(xmlDoc.xml); 
+	} 
+	else if (document.implementation && document.implementation.createDocument) { 
+		var xmlDoc; 
+		xmlDoc = document.implementation.createDocument("", "", null); 
+		xmlDoc.async = false; 
+		xmlDoc.load(input.value); 
+		alert(xmlDoc.xml);
+	} else { 
+		alert('error'); 
+	} 
+}
+
+</script>
 
 {% endblock %}

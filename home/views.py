@@ -11,6 +11,7 @@ from django.core.paginator import PageNotAnInteger
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse
+import markdown2
 import pdb
 
 
@@ -44,16 +45,10 @@ def detail(request, pk):
 @login_required
 def writing(request):
     """docstring for post_new"""
-    #  if request.is_ajax()
-    #      form = ArticleForm()
-    #      if request.method == 'POST':
-    #          pdb.set_trace()
-    #          data = json.loads(request.body.decode('utf-8'))
-    #          form.title = data['title']
-    #          form.text = data['text']
-    #          form.author = request.user
-    #          form.save()
-    if request.method == 'POST':
+    if request.is_ajax():
+        if request.method == 'POST':
+            return HttpResponse(markdown2.markdown(request.POST.get('text'), extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"]))
+    elif request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
@@ -82,7 +77,10 @@ def publish(request, pk):
 
 def modification(request, pk):
     post = get_object_or_404(Article, pk=pk)
-    if request.method == "POST":
+    if request.is_ajax():
+        if request.method == 'POST':
+            return HttpResponse(markdown2.markdown(request.POST.get('text'), extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"]))
+    elif request.method == "POST":
         # instance attr post is instance object
         form = ArticleForm(request.POST, instance=post)
         if form.is_valid():
@@ -184,3 +182,9 @@ def index(request):
 
 def work(request):
     return render(request, 'blog/work.html')
+
+
+def uploadfiletomarkdown(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            return HttpResponse(markdown2.markdown(request.POST.get('text'), extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"]))

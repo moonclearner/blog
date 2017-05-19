@@ -132,19 +132,13 @@
 		});
 	}
 
-
-	// Document on load.
 	$(function(){
-
 		gotToNextSection();
 		loaderPage();
 		ScrollNext();
 		moreProjectSlider();
 		styleToggle();
-
-		// Animate
 		contentWayPoint();
-
 	});
 
 
@@ -175,47 +169,24 @@ $(document).ready(function() {
 
 });
 
+
+$(function(){
+	$(".writingform #id_title").addClass("form-control")
+	$(".writingform #id_category").addClass("form-control")
+	$(".writingform #id_tag").addClass("form-control")
+
+})
+
+
 // add markdown attr
 $(function(){
-Dropzone.autoDiscover = false;
-	$(".container .col-md-12 .writingform p textarea").markdown(
+	$(".writingform p textarea").markdown(
 		{
-			autofocus:true,
+			autofocus:false,
 			savable:false,
-			additionalButtons: [
-				[{
-					name: "groupCustom",
-					data: [{
-						name: "cmdBeer",
-						toggle: true,
-						title: "upload",
-						icon: "glyphicon glyphicon-user",
-						callback: function(e){
-							// Replace selection with some drinks
-							var chunk, cursor,
-								selected = e.getSelection(), content = e.getContent(),
-								drinks = ["Heinekken", "Budweiser",
-									"Iron City", "Amstel Light",
-									"Red Stripe", "Smithwicks",
-									"Westvleteren", "Sierra Nevada",
-									"Guinness", "Corona", "Calsberg"],
-								index = Math.floor((Math.random()*10)+1)
-
-							// Give random drink
-							chunk = drinks[index]
-
-							// transform selection and set the cursor into chunked text
-							e.replaceSelection(chunk)
-							cursor = selected.start
-
-							// Set the cursor
-							e.setSelection(cursor,cursor+chunk.length)
-						}
-					}]
-				}]
-			]
+			hiddenButtons:"cmdPreview",
+			disabledButtons:"cmdPreview",
 		});
-
 });
 
 
