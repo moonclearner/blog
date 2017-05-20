@@ -37,9 +37,8 @@ urlpatterns = [
     url(r'^writing/(?P<pk>[0-9]+)/remove/$', views.remove, name='remove'),
     url(r'^condition/(?P<condition>\w+)/(?P<mode>\w+)$', views.search_condition, name='search_condition'),
     url(r'uploadtomarkdown/$', views.uploadfiletomarkdown, name='uploadmarkdown'),
-    url(r'^search/$', views.blog_search, name='search'),
+    url(r'^search/(?P<searchcontent>\w+)/$', views.blog_search, name='search'),
     url(r'^work/$', views.work, name='work'),
-    url(r'^archives/$', views.archives, name='archives'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

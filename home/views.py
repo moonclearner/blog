@@ -11,6 +11,7 @@ from django.core.paginator import PageNotAnInteger
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse
+from django.shortcuts import render_to_response
 import markdown2
 import pdb
 
@@ -135,7 +136,12 @@ def search_condition(request, condition, mode):
     elif mode == 'tag':
         postsAll = Article.objects.filter(tag__name__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
     elif mode == 'times':
-        postsAll = Article.objects.filter(published_date__year=condition).filter(published_date__isnull=False).order_by('-published_date')
+        if len(condition) == 4:
+            postsAll = Article.objects.filter(published_date__year=condition).filter(published_date__isnull=False).order_by('-published_date')
+        elif len(condition) == 6:
+            postsAll = Article.objects.filter(published_date__year=str(condition)[0:4]).filter(published_date__month=str(condition)[4:]).order_by('-published_date')
+        elif len(condition) == 8:
+            postsAll = Article.objects.filter(published_date__year=str(condition)[0:4]).filter(published_date__month=str(condition)[4:6]).filter(published_date__day=str(condition)[6:8]).order_by('-published_date')
     paginator = Paginator(postsAll, 5)
     page = request.GET.get('page')
     try:
@@ -146,32 +152,25 @@ def search_condition(request, condition, mode):
         posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
-
-def archives(request):
-    try:
-        post_list = Article.objects.filter(published_date__isnull=False).order_by('-published_date')
-    except Article.DoesNotExist:
-        raise Http404
-    return render(request, 'blog/archives.html', {'post_list': post_list, 'error': False})
-
-
 def about_me(request):
     return render(request, 'blog/about_me.html')
 
 
-def blog_search(request):
-    if 'searchcontent' in request.GET:
-        searchcontent = request.GET['searchcontent']
-        if searchcontent is None:
-            return render(request, 'blog/post_list.html')
-        else:
-            # there has two underline
-            post_list = Article.objects.filter(title__icontains=searchcontent)
-            if len(post_list) == 0:
-                errorinf = True
-            else:
-                errorinf = False
-            return render(request, 'blog/search.html', {'post_list': post_list, 'error': errorinf})
+def blog_search(request, searchcontent):
+    if searchcontent is None:
+        return render(request, 'blog/blog.html')
+    else:
+        # there has two underline
+        post_list = Article.objects.filter(title__icontains=searchcontent).filter(published_date__isnull=False)
+        paginator = Paginator(post_list, 5)
+        page = request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+        return render_to_response('blog/blog.html', {'posts': posts, 'page': True})
 
 
 def index(request):

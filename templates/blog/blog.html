@@ -5,94 +5,103 @@
 <!-- If directly use static, will error -->
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-  $(".animate-box").removeClass("fh5co-active");
-  $("div #blog").addClass("fh5co-active"); 
+	$(".animate-box").removeClass("fh5co-active");
+	$("div #blog").addClass("fh5co-active"); 
 });
 </script>
 
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	$("#searchButton").bind('click', function(){
+		 location.href="/search/"+$('#searchcontent').val();
+	});
+
+});
+
+</script>
+
 <header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
-  <div class="container">
-    <div class="fh5co-text-wrap animate-box">
-      <div class="fh5co-intro-text">
-        <h1>Perfection <span>Stems From </span>Persistence</h1>
-      </div>
-    </div>
-  </div>
-	<!-- <div class="btn-next animate-box fh5co-learn-more"> -->
-	<!--   <a href="#" class="scroll-btn"> -->
-	<!--     <span>See the detail</span> -->
-	<!--     <i class="icon-chevron-down"></i> -->
-	<!--   </a> -->
-	<!-- </div> -->
+	<div class="container">
+		<div class="fh5co-text-wrap animate-box">
+			<div class="fh5co-intro-text">
+				<h1>Perfection <span>Stems From </span>Persistence</h1>
+			</div>
+		</div>
+	</div>
 </header>
 
 {% endblock %}
-
 {% block body %}
+
+<div class="input-group">
+    <input type="text" id="searchcontent" name="searchcontent" class="form-control input-lg"><span id="searchButton" class="input-group-addon btn btn-primary">搜索</span>
+</div>
+</br>
+
 {% for post in posts %}
 
 <div class="post">
+	<div class="papertitlecap list-inline text-capitalize">
+		<ul>
+			<li class="subtitle_author">
+				{% if post.author %}
+				<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
+					<span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
+				{% endif %}
+			</li>
+			<li class="subtitle">
+				<a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
+			</li>
+			<li class="subtitle_category">
+				{% if post.category %}
+				<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
+					<span class="glyphicon glyphicon-book">{{post.category|title}}</span></a>
+				{% endif %}
+			</li>
+		</ul>
+	</div>
 
-  <div class="papertitlecap list-inline text-capitalize">
-    <ul>
-      <li class="subtitle_author">
-        {% if post.author %}
-        <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
-          <span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
-        {% endif %}
-      </li>
-      <li class="subtitle">
-        <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
-      </li>
-      <li class="subtitle_category">
-        {% if post.category %}
-        <a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
-          <span class="glyphicon glyphicon-book">{{post.category|title}}</span></a>
-        {% endif %}
-      </li>
-    </ul>
-  </div>
+	<div class="blogtext">
+		<div class="blogbody">
+			<p>{{ post.markdowntext|safe|truncatechars_html:300}}</p>
+		</div>
+	</div>
 
-  <div class="blogtext">
-    <div class="blogbody">
-      <p>{{ post.markdowntext|safe|truncatechars_html:300}}</p>
-    </div>
-  </div>
+	<div class="subfooter">
+		<ul>
+			<li>
+				<span class="glyphicon glyphicon-hand-down">Click:{{post.clicknums}}</span>
 
-  <div class="subfooter">
-    <ul>
-      <li>
-        <span class="glyphicon glyphicon-hand-down">Click:{{post.clicknums}}</span>
-      
-      </li>
-      {% with tags=post.tag.all %}
-      {% if tags %}
-      <li>
-        {% if tags %}
-        <span class="tags">
-          <i class="glyphicon glyphicon-tags"></i>
-          {% for tag in tags %}
-          <a href="{% url 'search_condition' condition=tag mode='tag' %}">{{tag.name}}</a>
-          {% endfor %}
-        </span>
-        {% endif %}
-      </li>
-      {% endif %}
-        {% endwith %}
-      <li>
-        <a class="glyphicon glyphicon-time pure-button" href=""></a>
-        <a class="pure-button" href="{% url 'search_condition' condition=post.published_date|date:'Y_m' mode='times' %}">{{ post.published_date|date:'M' }}</a>
-        <a class="pure-button" href="{% url 'search_condition' condition=post.published_date|date:'Y_m_d' mode='times' %}">{{ post.published_date|date:'d' }}</a>
-        <a class="pure-button" href="{% url 'search_condition' condition=post.published_date.year mode='times' %}">{{ post.published_date|date:'Y' }}</a>
-      </li>
-      <li>
-        <a class="glyphicon glyphicon-edit" href="{% url 'modification' pk=post.pk %}">Edit</a>
-      </li>
-      <li>
-        <a class="glyphicon glyphicon-file pure-button" href="{% url 'detail' pk=post.pk %}">More>>> </a>
-      </li>
-    </ul>
-  </div>
+			</li>
+			{% with tags=post.tag.all %}
+			{% if tags %}
+			<li>
+				{% if tags %}
+				<span class="tags">
+					<i class="glyphicon glyphicon-tags"></i>
+					{% for tag in tags %}
+					<a href="{% url 'search_condition' condition=tag mode='tag' %}">{{tag.name}}</a>
+					{% endfor %}
+				</span>
+				{% endif %}
+			</li>
+			{% endif %}
+			{% endwith %}
+			<li>
+				<a class="glyphicon glyphicon-time pure-button" href=""></a>
+				<a class="pure-button" href="{% url 'search_condition' condition=post.published_date|date:'Ym' mode='times' %}">{{ post.published_date|date:'M' }}</a>
+				<a class="pure-button" href="{% url 'search_condition' condition=post.published_date|date:'Ymd' mode='times' %}">{{ post.published_date|date:'d' }}</a>
+				<a class="pure-button" href="{% url 'search_condition' condition=post.published_date.year mode='times' %}">{{ post.published_date|date:'Y' }}</a>
+			</li>
+			<li>
+				<a class="glyphicon glyphicon-edit" href="{% url 'modification' pk=post.pk %}">Edit</a>
+			</li>
+			<li>
+				<a class="glyphicon glyphicon-file pure-button" href="{% url 'detail' pk=post.pk %}">More>>> </a>
+			</li>
+		</ul>
+	</div>
 
 </div>
 
@@ -100,20 +109,20 @@ $(function() {
 {% endfor %}
 
 <div class="pagination">
-  <span class="step-links">
-    {% if posts.has_previous %}
-    <a href="?page={{ posts.previous_page_number }}">上一页</a>
-    {% endif %}
-    {% for page_number in posts.paginator.page_range %}
-    {% ifequal page_number posts.number %}
-    {{page_number}}
-    {% else %}
-    <a href="?page={{ page_number }}">{{page_number}}</a>
-    {% endifequal %}
-    {% endfor %}
-    {% if posts.has_next %}
-    <a href="?page={{ posts.next_page_number }}">下一页</a>
-    {% endif %}
-  </span>
+	<span class="step-links">
+		{% if posts.has_previous %}
+		<a href="?page={{ posts.previous_page_number }}">上一页</a>
+		{% endif %}
+		{% for page_number in posts.paginator.page_range %}
+		{% ifequal page_number posts.number %}
+		{{page_number}}
+		{% else %}
+		<a href="?page={{ page_number }}">{{page_number}}</a>
+		{% endifequal %}
+		{% endfor %}
+		{% if posts.has_next %}
+		<a href="?page={{ posts.next_page_number }}">下一页</a>
+		{% endif %}
+	</span>
 </div>
 {% endblock %}

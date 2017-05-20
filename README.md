@@ -44,7 +44,10 @@ change markdown paser method and change model of article
 ![pic](https://github.com/moonclearner/blog/blob/master/markdownimage/QQ%E6%88%AA%E5%9B%BE20170519154814.png?raw=true)
 - add real time show markdown when writing markdown
 - change writing css to bootstrap
-- next target: add Rss function
+- next target:
+	- add Rss function
+	- add archive
+	- add search
 
 
 ## license
