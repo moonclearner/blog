@@ -15,6 +15,7 @@ It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
 - python manage.py makemigrations
 - python manage.py migrate
 - python manage.py createsuperuser
+- python manage.py collectstaic
 - uwsgi --ini myweb_uwsgi.ini
 
 ## change log
@@ -48,6 +49,15 @@ change markdown paser method and change model of article
 	- add Rss function
 	- add archive
 	- add search
+
+### 2017/5/21 星期日 22:26:50
+**web app deploy in server has an problem: admin manage page no css, cannot load css file**
+
+Solution:
+- set STATIC_ROOT
+	STATIC_ROOT and STATICFILES_DIRS cannot has same dir look for my setting.py
+- python manange collectstaic
+	add admin css js to your STATIC_ROOT
 
 
 ## license

@@ -123,9 +123,10 @@ USE_TZ = True
 
 # STATIC_DIRS has worry
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "statics"),
+    os.path.join(BASE_DIR, "home/statics"),
 ]
 STATIC_URL = '/static/'
+STATIC_ROOT = 'statics'
 
 # login ok redirect to /
 LOGIN_REDIRECT_URL = '/'
