@@ -54,10 +54,16 @@ change markdown paser method and change model of article
 **web app deploy in server has an problem: admin manage page no css, cannot load css file**
 
 Solution:
-- set STATIC_ROOT
-	STATIC_ROOT and STATICFILES_DIRS cannot has same dir look for my setting.py
+- set STATIC\_ROOT
+	STATIC\_ROOT and STATICFILES\_DIRS cannot has same dir look for my setting.py
 - python manange collectstaic
-	add admin css js to your STATIC_ROOT
+	add admin css js to your STATIC\_ROOT
+
+
+### 2017/5/22 星期一 22:18:28
+BUG:
+- category or paper title cannot have space
+- manytomanyfields save has BUG, cannot save modification or new writing
 
 
 ## license

@@ -88,6 +88,8 @@ def modification(request, pk):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            if request.POST['tag']:
+                pdb.set_trace()
             return redirect('detail', pk=post.pk)
     else:
         form = ArticleForm(instance=post)

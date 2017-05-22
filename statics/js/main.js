@@ -173,7 +173,7 @@ $(document).ready(function() {
 $(function(){
 	$(".writingform #id_title").addClass("form-control")
 	$(".writingform #id_category").addClass("form-control")
-	$(".writingform #id_tag").addClass("form-control")
+  // $(".writingform #id_tag").addClass("form-control")
 
 })
 

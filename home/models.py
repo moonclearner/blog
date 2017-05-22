@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from uuslug import slugify
 import markdown2
+import pdb
 
 
 class Category(models.Model):
@@ -33,7 +34,7 @@ class Article(models.Model):
     author = models.ForeignKey(User)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=40, null=True, blank=True)
-    tag = models.ManyToManyField('Tag', blank=True, null=True, default="")
+    tag = models.ManyToManyField('Tag')
     category = models.ForeignKey(Category)
     text = models.TextField()
     markdowntext = models.TextField(default='', null=True, blank=True)
