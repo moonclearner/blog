@@ -89,7 +89,11 @@ def modification(request, pk):
             post.author = request.user
             post.save()
             if request.POST['tag']:
-                pdb.set_trace()
+                # before add need clear all, avoid unique constraint
+                post.tag.clear()
+                for i in request.POST.getlist('tag'):
+                    # get only get last one of attr
+                    post.tag.add(i)
             return redirect('detail', pk=post.pk)
     else:
         form = ArticleForm(instance=post)
@@ -131,12 +135,12 @@ def remove(request, pk):
 def search_condition(request, condition, mode):
     if mode == 'article':
         # one to many have two methods to search
-        postsAll = Category.objects.get(name=condition).article_set.all().filter(published_date__isnull=False).order_by('-published_date')
+        postsAll = Category.objects.get(pk=condition).article_set.all().filter(published_date__isnull=False).order_by('-published_date')
         #  postsAll = Article.objects.filter(category__name__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
     elif mode == 'author':
-        postsAll = Article.objects.filter(author__username__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
+        postsAll = Article.objects.filter(author__pk__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
     elif mode == 'tag':
-        postsAll = Article.objects.filter(tag__name__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
+        postsAll = Article.objects.filter(tag__pk__exact=condition).filter(published_date__isnull=False).order_by('-published_date')
     elif mode == 'times':
         if len(condition) == 4:
             postsAll = Article.objects.filter(published_date__year=condition).filter(published_date__isnull=False).order_by('-published_date')
@@ -154,6 +158,7 @@ def search_condition(request, condition, mode):
         posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
+
 def about_me(request):
     return render(request, 'blog/about_me.html')
 
@@ -164,6 +169,8 @@ def blog_search(request, searchcontent):
     else:
         # there has two underline
         post_list = Article.objects.filter(title__icontains=searchcontent).filter(published_date__isnull=False)
+        # QuerySet merge use |
+        post_list |= Article.objects.filter(text__icontains=searchcontent).filter(published_date__isnull=False)
         paginator = Paginator(post_list, 5)
         page = request.GET.get('page')
         try:

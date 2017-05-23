@@ -46,7 +46,7 @@ $(function(){
 		<ul>
 			<li class="subtitle_author">
 				{% if post.author %}
-				<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author mode='author' %}">
+				<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.author.pk mode='author' %}">
 					<span class="glyphicon glyphicon-user">{{post.author|title}}</span></a>
 				{% endif %}
 			</li>
@@ -55,7 +55,7 @@ $(function(){
 			</li>
 			<li class="subtitle_category">
 				{% if post.category %}
-				<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category mode='article' %}">
+				<a class="post-category post-category-js" href="{% url 'search_condition' condition=post.category.pk mode='article' %}">
 					<span class="glyphicon glyphicon-book">{{post.category|title}}</span></a>
 				{% endif %}
 			</li>
@@ -81,7 +81,7 @@ $(function(){
 				<span class="tags">
 					<i class="glyphicon glyphicon-tags"></i>
 					{% for tag in tags %}
-					<a href="{% url 'search_condition' condition=tag mode='tag' %}">{{tag.name}}</a>
+					<a href="{% url 'search_condition' condition=tag.pk mode='tag' %}">{{tag.name}}</a>
 					{% endfor %}
 				</span>
 				{% endif %}
