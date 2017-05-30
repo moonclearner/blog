@@ -7,6 +7,7 @@
 - markdown2 2.3.3
 - pygments 2.2.0
 - django-uuslug
+- pytz
 
 ## example
 It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
@@ -53,10 +54,12 @@ change markdown paser method and change model of article
 ### 2017/5/21 星期日 22:26:50
 **web app deploy in server has an problem: admin manage page no css, cannot load css file**
 Solution:
-- set STATIC\_ROOT
-	STATIC\_ROOT and STATICFILES\_DIRS cannot has same dir look for my setting.py
-- python manange collectstaic
-	add admin css js to your STATIC\_ROOT
+```markdown
+1. set STATIC_ROOT
+	STATIC_ROOT and STATICFILES_DIRS cannot has same dir look for my setting.py
+2. python manange collectstaic
+	add admin css js to your STATIC_ROOT
+```
 
 ### 2017/5/22 星期一 22:18:28
 BUG:
@@ -70,6 +73,10 @@ have solve yesterday BUG :)
 Because The Dragon Boat Festival and My job, I cannot update frequently recently sorry :)
 - restore writing new article cannot load mult tag
 - restore some font color
+
+TODO:
+- response formula
+- scroll to display like PPT via [site](http://www.dowebok.com/77.html)
 
 ## license
 WTFPL
