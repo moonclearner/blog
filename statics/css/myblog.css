@@ -139,7 +139,7 @@ clear:both;
 
 .markdowneditor {
 	float:left;
-	width:600px;
+	width:45%;
 	height:1100px;
 	margin:0 auto;
 	margin-left:20px;
@@ -147,7 +147,7 @@ clear:both;
 }
 #id_previewmarkdown {
 	float:right;
-	width:600px;
+	width:45%;
 	height:700px;
 	margin:0 auto;
 	margin-top:40px;

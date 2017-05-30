@@ -66,5 +66,10 @@ BUG:
 ### 2017/5/23 星期二 22:56:09
 have solve yesterday BUG :)
 
+### 2017/5/30 星期二 16:03:31
+Because The Dragon Boat Festival and My job, I cannot update frequently recently sorry :)
+- restore writing new article cannot load mult tag
+- restore some font color
+
 ## license
 WTFPL

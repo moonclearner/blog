@@ -34,7 +34,6 @@ def blog(request):
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
 
-@login_required
 def detail(request, pk):
     """docstring for post_detail"""
     post = get_object_or_404(Article, pk=pk)
@@ -55,6 +54,12 @@ def writing(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            if request.POST['tag']:
+                # before add need clear all, avoid unique constraint
+                post.tag.clear()
+                for i in request.POST.getlist('tag'):
+                    # get only get last one of attr
+                    post.tag.add(i)
             return redirect('detail', pk=post.pk)
     else:
         form = ArticleForm()
@@ -69,6 +74,7 @@ def draft_list(request):
     return render(request, 'blog/draft_list.html', {'posts': posts})
 
 
+@login_required
 def publish(request, pk):
     post = get_object_or_404(Article, pk=pk)
     # Article model has publish function to save published_date
@@ -76,6 +82,7 @@ def publish(request, pk):
     return redirect('detail', pk=pk)
 
 
+@login_required
 def modification(request, pk):
     post = get_object_or_404(Article, pk=pk)
     if request.is_ajax():
@@ -110,6 +117,7 @@ def get_object_or_None(klass, *args, **kwargs):
         return None
 
 
+@login_required
 def remove(request, pk):
     post = get_object_or_404(Article, pk=pk)
     category = Category.objects.get(name=post.category)
@@ -192,6 +200,7 @@ def work(request):
     return render(request, 'blog/work.html')
 
 
+@login_required
 def uploadfiletomarkdown(request):
     if request.is_ajax():
         if request.method == 'POST':
