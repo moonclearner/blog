@@ -51,7 +51,7 @@ $(function(){
 				{% endif %}
 			</li>
 			<li class="subtitle">
-				<a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a>
+				<a btn-default" date-toggle="tooltip" data-placement="bottom" title="{{post.title}}" href="{% url 'detail' pk=post.pk %}">{{ post.title|title|truncatechars:"10" }}</a>
 			</li>
 			<li class="subtitle_category">
 				{% if post.category %}

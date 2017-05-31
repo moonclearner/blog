@@ -78,5 +78,12 @@ TODO:
 - response formula
 - scroll to display like PPT via [site](http://www.dowebok.com/77.html)
 
+### 2017/5/31 星期三 21:52:27
+- scroll to display like ppt  OK!
+- response formula OK!
+
+TODO:
+- response web
+
 ## license
 WTFPL

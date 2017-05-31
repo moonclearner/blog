@@ -75,24 +75,7 @@ padding:0;
 list-style:none;
 overflow:hidden;
 }
-@media (max-width:768px) {
-.subfooter ul li{
-	font-size:9px;
-}
 
-.papertitlecap .subtitle{
-font-size:25px !important;
-}
-
-.papertitlecap .subtitle_author{
-font-size:10px;
-}
-
-.papertitlecap .subtitle_category{
-	font-size:10px;
-}
-
-}
 
 .papertitlecap li{
 cursor:auto;
@@ -211,8 +194,40 @@ padding:10px;
   margin:0 auto;
 }
 
-.container .row .col-md-12 >div#loginform button{
-  border-radius:10px;
-  border:2px solid;
+
+@media (max-width:768px) {
+	#fh5co-nav{
+		font-size:10px!important;
+	}
+
+	.subfooter ul li{
+		font-size:9px;
+	}
+
+	.papertitlecap .subtitle{
+		font-size:25px !important;
+	}
+
+	.papertitlecap .subtitle_author{
+		font-size:10px;
+	}
+
+	.papertitlecap .subtitle_category{
+		font-size:10px;
+	}
+	.markdowneditor{
+		width:90% !important;
+	}
+	#id_previewmarkdown {
+		display:none;
+	}
+	.form-control{
+	width:95%!important;
+	}
+
+	.img-responsive{
+	max-width:80%!important;
+	}
+
 
 }

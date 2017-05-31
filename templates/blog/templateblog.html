@@ -3,16 +3,20 @@
 {% block content %}
 
 {% block script %}
+
 {% endblock %}
 
 <div class="js-fh5co-waypoint fh5co-project-detail" id="fh5co-main" data-colorbg="">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {% block body %}
-        {% endblock %}
-      </div>
-    </div> 
-  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{% block body %}
+
+				{% endblock %}
+
+				{% include "blog/footer.html" %}	
+			</div>
+		</div> 
+	</div>
 </div>
 {% endblock %}

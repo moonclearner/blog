@@ -1025,3 +1025,11 @@ h1, h2, h3, h4, h5, h6 {
 .container .col-md-12 .post .blogbody br{
 	display:none;
 }
+
+#fp-nav ul li a span {
+    border: 1px solid #fff !important;
+}
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span {
+    background: #fff !important;
+}
