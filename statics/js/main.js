@@ -15,14 +15,6 @@
 	};
 
 
-	// Go to next section
-	var gotToNextSection = function(){
-		var el = $('.fh5co-learn-more'),
-			w = el.width(),
-			divide = -w/2;
-		el.css('margin-left', divide);
-	};
-
 	// Loading page
 	var loaderPage = function() {
 		$(".fh5co-loader").fadeOut("slow");
@@ -30,17 +22,6 @@
 
 
 
-	// Scroll Next
-	var ScrollNext = function() {
-		$('body').on('click', '.scroll-btn', function(e){
-			e.preventDefault();
-
-			$('html, body').animate({
-				scrollTop: $( $(this).closest('[data-next="yes"]').next()).offset().top
-			}, 1000, 'easeInOutExpo');
-			return false;
-		});
-	};
 
 
 
@@ -96,49 +77,12 @@
 
 	}
 
-	// Animations
-
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.animate-box').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-				i++;
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-					$('body .animate-box.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							el.addClass('fadeInUp animated');
-							el.removeClass('item-animate');
-						},  k * 200, 'easeInOutExpo' );
-					});
-
-				}, 100);
-
-			}
-
-		} , { offset: '95%' } );
-	};
-
-
-	var moreProjectSlider = function() {
-		$('.flexslider').flexslider({
-			animation: "slide",
-			animationLoop: false,
-			itemWidth: 310,
-			itemMargin: 20,
-			controlNav: false
-		});
-	}
-
 	$(function(){
-		gotToNextSection();
+		// gotToNextSection();
 		loaderPage();
-		ScrollNext();
-		moreProjectSlider();
+		// ScrollNext();
 		styleToggle();
-		contentWayPoint();
+		// contentWayPoint();
 	});
 
 
@@ -168,28 +112,4 @@ $(document).ready(function() {
 	}
 
 });
-
-
-$(function(){
-	$(".writingform #id_title").addClass("form-control")
-	$(".writingform #id_category").addClass("form-control")
-	$(".writingform #id_tag").addClass("form-control")
-
-})
-
-
-// add markdown attr
-$(function(){
-	$(".writingform p textarea").markdown(
-		{
-			autofocus:false,
-			savable:false,
-			hiddenButtons:"cmdPreview",
-			disabledButtons:"cmdPreview",
-		});
-});
-
-
-
-// search event
 

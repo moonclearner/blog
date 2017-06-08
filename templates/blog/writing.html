@@ -1,6 +1,17 @@
 {% extends 'blog/template.html' %}
 <!-- If directly use static, will error -->
 {% load staticfiles %}
+{% block headscript %}
+  <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-markdown.min.css' %}">
+	<!-- markdown -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-markdown.js' %}"></script>
+  <script src="{% static 'js/markdown.js' %}"></script>
+  <script src="{% static 'js/to-markdown.js' %}"></script>
+  <script src="{% static 'js/writing.js' %}"></script>
+
+{% endblock %}
 
 {% block content %}
 <script type="text/javascript" charset="utf-8">

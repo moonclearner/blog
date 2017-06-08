@@ -1,6 +1,10 @@
 {% extends 'blog/templateblog.html' %}
 {% load staticfiles %}
 
+{% block headscript %}
+  <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
+{% endblock %}
+
 {% block script %}
 <!-- If directly use static, will error -->
 <script type="text/javascript" charset="utf-8">

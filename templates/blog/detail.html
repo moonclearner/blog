@@ -2,6 +2,10 @@
 {% block content %}
 <!-- If directly use static, will error -->
 {% load staticfiles %}
+{% block headscript %}
+  <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
+{% endblock %}
+
 <script type="text/javascript" charset="utf-8">
 $(function() { 
   $(".animate-box").removeClass("fh5co-active");

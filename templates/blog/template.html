@@ -1,93 +1,57 @@
 {% load staticfiles %}
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BLOG &mdash; moonclearner Life is short, I use python</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="moonclearner's blog" />
-  <meta name="keywords" content="moonclearner, python, blog" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BLOG &mdash; moonclearner Life is short, I use python</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="moonclearner's blog" />
+	<meta name="keywords" content="moonclearner, python, blog" />
+	<!-- Place favicon.ico-->
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!-- main css -->
+	<link rel="stylesheet" id="theme-switch" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/myblog.css' %}">
 
-  <!-- Facebook and Twitter integration -->
-  <meta property="og:title" content=""/>
-  <meta property="og:image" content=""/>
-  <meta property="og:url" content=""/>
-  <meta property="og:site_name" content=""/>
-  <meta property="og:description" content=""/>
-  <meta name="twitter:title" content="" />
-  <meta name="twitter:image" content="" />
-  <meta name="twitter:url" content="" />
-  <meta name="twitter:card" content="" />
+	<!-- jQuery -->
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<!-- jQuery Cookie -->
+	<script src="{% static 'js/jquery.cookie.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
 
-  <!-- Place favicon.ico-->
-  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-  <!-- Flexslider -->
-  <link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
-  <!-- Icomoon Icon Fonts-->
-  <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
-  <!-- Bootstrap  -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  <!-- main css -->
-  <link rel="stylesheet" id="theme-switch" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/bootstrap-markdown.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/myblog.css' %}">
-  <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/jquery.fullPage.js' %}"></script>
+	{% block headscript %}
 
-  <!-- jQuery -->
-  <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-  <!-- jQuery Cookie -->
-  <script src="{% static 'js/jquery.cookie.js' %}"></script>
-	<!-- markdown -->
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap-markdown.js' %}"></script>
-  <script src="{% static 'js/markdown.js' %}"></script>
-  <script src="{% static 'js/to-markdown.js' %}"></script>
-	<script src="{% static 'js/dropzone.js' %}"></script>
-
-  <!-- Waypoints -->
-  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-  <!-- Flexslider -->
-  <script src="{% static 'js/jquery.flexslider-min.js' %}"></script>
-  <!-- Main JS  -->
-  <script src="{% static 'js/main.js' %}"></script>
-  <script src="{% static 'js/jquery.fullPage.js' %}"></script>
-
-
-  <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
-  <![endif]-->
+	{% endblock %}
 </head>
 <body>
-  <div class="fh5co-loader"></div>
-  <div id="fh5co-page">
-    <nav id="fh5co-nav" role="navigation">
-      <ul>
-        <li id="home" class="animate-box fh5co-active"><a href="{% url 'home' %}" class="transition">Home</a></li>
-        <li id="blog" class="animate-box"><a href="{% url 'blog' %}" class="transition">Blog</a></li>
-        <li id="aboutme" class="animate-box"><a href="{% url 'about_me' %}" class="transition">AboutMe</a></li>
-        {% if user.is_authenticated %}
-        <li id="writing" class="animate-box"><a href="{% url 'writing' %}" class="transition">Writing</a></li>
-        <li id="logout" class="active"><a href="{% url 'logout' %}"><span class="transition"></span>Logout</a></li>
-        {% else %}
-        <li id="login" class="active"><a href="{% url 'login' %}"><span class="transition"></span>Login</a></li>
-        {% endif %}
+	<div class="fh5co-loader"></div>
+	<div id="fh5co-page">
+		<nav id="fh5co-nav" role="navigation">
+			<ul>
+				<li id="home" class="animate-box fh5co-active"><a href="{% url 'home' %}" class="transition">Home</a></li>
+				<li id="blog" class="animate-box"><a href="{% url 'blog' %}" class="transition">Blog</a></li>
+				<li id="aboutme" class="animate-box"><a href="{% url 'about_me' %}" class="transition">AboutMe</a></li>
+				{% if user.is_authenticated %}
+				<li id="writing" class="animate-box"><a href="{% url 'writing' %}" class="transition">Writing</a></li>
+				<li id="logout" class="active"><a href="{% url 'logout' %}"><span class="transition"></span>Logout</a></li>
+				{% else %}
+				<li id="login" class="active"><a href="{% url 'login' %}"><span class="transition"></span>Login</a></li>
+				{% endif %}
 
-      </ul>
-      <a class="style-toggle js-style-toggle" data-style="default" href="#">
-        <span class="fh5co-circle"></span>
-      </a>
-    </nav>
-    {% block content %}
+			</ul>
+			<a class="style-toggle js-style-toggle" data-style="default" href="#">
+				<span class="fh5co-circle"></span>
+			</a>
+		</nav>
+		{% block content %}
 
 
-    {% endblock %}
-  </div>
+		{% endblock %}
+	</div>
 </body>
 </html>
 

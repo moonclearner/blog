@@ -1,10 +1,15 @@
 {% extends 'blog/template.html' %}
 {% load staticfiles %}
+
+{% block headscript %}
+		<link rel="stylesheet" href="{% static 'css/aboutme.css' %}">
+{% endblock %}
+
 {% block content %}
 <script type="text/javascript" charset="utf-8">
   $(function() { 
     $(".animate-box").removeClass("fh5co-active");
-    $("div #me").addClass("fh5co-active"); 
+    $("div #aboutme").addClass("fh5co-active"); 
 });
 </script>
 <header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
@@ -26,10 +31,12 @@
             <h3 class="fh5co-section-heading"><span class="fh5co-number">N<sup>o</sup> 1</span> Bio</h3>
           </div>
           <div class="col-md-9">
-						<p>
-            <figure style="text-align:center" class="fh5co-bio-photo"><img src="/static/images/title.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template"></figure>
-						</p>
-            <p class="fh5co-lead">Dai jinajian, online name moonclearner, born in 1994, currently a graduate student at Chongqing University of Posts and Telecommunications, specializing in electronics and communications engineering, like programming and video games.</p>
+						<span>
+            <figure style="text-align:center" class="fh5co-bio-photo"><img src="/static/images/ukulele.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template"></figure>
+						</span>
+            <span class="fh5co-lead">MY NAME is Dai jinajian, online name moonclearner, born in 1994, currently a graduate student at Chongqing
+							University of Posts and Telecommunications, specializing in electronics and communications engineering, like programming and
+							video games.</span>
             <p>Do What I Wanna Do, And I Can Do Better</p>
           </div>
         </div>
