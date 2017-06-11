@@ -1,0 +1,17 @@
+<nav id="fh5co-nav" role="navigation">
+	<ul>
+		<li id="home" class="animate-box fh5co-active"><a href="{% url 'home' %}" class="transition">Home</a></li>
+		<li id="blog" class="animate-box"><a href="{% url 'blog' %}" class="transition">Blog</a></li>
+		<li id="aboutme" class="animate-box"><a href="{% url 'about_me' %}" class="transition">AboutMe</a></li>
+		{% if user.is_authenticated %}
+		<li id="writing" class="animate-box"><a href="{% url 'writing' %}" class="transition">Writing</a></li>
+		<li id="logout" class="active"><a href="{% url 'logout' %}"><span class="transition"></span>Logout</a></li>
+		{% else %}
+		<li id="login" class="active"><a href="{% url 'login' %}"><span class="transition"></span>Login</a></li>
+		{% endif %}
+
+	</ul>
+	<a class="style-toggle js-style-toggle" data-style="default" href="#">
+		<span class="fh5co-circle"></span>
+	</a>
+</nav>
