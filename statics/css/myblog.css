@@ -126,6 +126,12 @@ clear:both;
   padding:0;
   margin:0;
 }
+#id_title {
+	padding-top:0px;
+	padding-bottom:0px;
+
+
+}
 
 .writing_choice ul li{
   list-style:none;
@@ -172,7 +178,8 @@ padding:10px;
 
 
 .writingform p .md-editor #id_text {
-	padding:20px;
+	padding-left:10px;
+	padding-right:10px;
 }
 
 #clearboth {
@@ -226,8 +233,14 @@ padding:10px;
 	}
 
 	.img-responsive{
-	max-width:80%!important;
+	max-width:60%!important;
 	}
+	.writing_choice ul li a{
+		font-size:20px;
+}
+.help-block {
+	font-size:15px;
+}
 
 
 }

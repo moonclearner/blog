@@ -1033,3 +1033,24 @@ h1, h2, h3, h4, h5, h6 {
 .fp-slidesNav ul li a.active span {
     background: #fff !important;
 }
+#id_previewmarkdown .preview_text{
+	color:black !important;
+}
+#id_previewmarkdown h1{
+	color:black !important;
+}
+#id_previewmarkdown h2{
+	color:black !important;
+}
+#id_previewmarkdown h3{
+	color:black !important;
+}
+#id_previewmarkdown h4{
+	color:black !important;
+}
+#id_previewmarkdown h5{
+	color:black !important;
+}
+#id_previewmarkdown h6{
+	color:black !important;
+}
