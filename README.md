@@ -3,11 +3,12 @@
 ![blog](https://github.com/moonclearner/blog/blob/master/markdownimage/QQ%E6%88%AA%E5%9B%BE20170429195835.png?raw=true)
 
 ## requirement
-- django 1.10.5
-- markdown2 2.3.3
-- pygments 2.2.0
+- django 1.9.5 or up
+- markdown2
+- pygments
 - django-uuslug
 - pytz
+- Pillow
 
 ## example
 It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
@@ -84,6 +85,9 @@ TODO:
 
 TODO:
 - response web
+
+### 2017/6/19 星期一 11:53:30
+- swtich my databases to postgresql and redis for cache
 
 ## license
 WTFPL
