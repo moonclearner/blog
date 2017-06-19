@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse
 from django.shortcuts import render_to_response
 import markdown2
+import cache_manage
 import pdb
 
 
@@ -38,7 +39,8 @@ def detail(request, pk):
     """docstring for post_detail"""
     post = get_object_or_404(Article, pk=pk)
     #  post.text = markdown2.markdown(post.text, extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"])
-    post.increase_click()
+    cache_manage.update_click(post)
+    #  post.increase_click()
     return render(request, 'blog/detail.html', {'post': post})
 
 
