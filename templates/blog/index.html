@@ -5,82 +5,81 @@
 <link rel="stylesheet" href="{% static 'css/jquery.fullPage.css' %}">
 <script type="text/javascript" charset="utf-8">
 $(function() { 
-	$(".animate-box").removeClass("fh5co-active");
-	$("div #home").addClass("fh5co-active"); 
+  $(".animate-box").removeClass("fh5co-active");
+  $("div #home").addClass("fh5co-active"); 
 });
 </script>
-
 <script type="text/javascript" charset="utf-8">
 $(function(){
-	$('#indexsection').fullpage({
-		'navigation': true,
-	});
+  $('#indexsection').fullpage({
+    'navigation': true,
+  });
 });
 </script>
 <div id="indexsection">
-	<div class="section">
-		{% include "blog/nav.html" %}
-		<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
-			<div class="container">
-				<div class="fh5co-text-wrap animate-box">
-					<div class="fh5co-intro-text">
-						<h1>I&acute;m a 23 Year Old Postgraduate based <span>in</span> Chongqin</h1>
-						<h1>I&acute;love python <span>because</span> life is short</h1>
-						<h2>Bulit by <a href="{% url 'about_me' %}" target="_blank">moonclearner</a></h2>
-					</div>
-				</div>
-			</div>
-		</header>
-	</div>
-	{% for cate in categories %}
+  <div class="section">
+    {% include "blog/nav.html" %}
+    <header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
+      <div class="container">
+        <div class="fh5co-text-wrap animate-box">
+          <div class="fh5co-intro-text">
+            <h1>I&acute;m a 23 Year Old Postgraduate based <span>in</span> Chongqin</h1>
+            <h1>I&acute;love python <span>because</span> life is short</h1>
+            <h2>Bulit by <a href="{% url 'about_me' %}" target="_blank">moonclearner</a></h2>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  {% for cate in categories %}
 
-	{% if cate.pk|divisibleby:"2" %}
-	<div class="section">
-		<div class="fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
-			<div class="container">
-				<div class="fh5co-project-inner row">
-					<div class="fh5co-imgs col-md-8 animate-box">
-						<div class="img-holder-1 animate-box">
-							<img class="img-responsive center-block" src="{{ cate.image.url }}" alt="Free HTML5 Bootstrap Template">
-						</div>
-					</div>
-					<div class="fh5co-text col-md-4 animate-box">
-						<h2>{{ cate.name|title }} Page</h2>
-						<p>{{ cate.brief|truncatechars:"50" }}</p>
-						<p><a href="{% url 'search_condition' condition=cate.pk mode='article' %}" class="btn btn-light btn-outline transition">View Notes</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	{% else %}
+  {% if cate.pk|divisibleby:"2" %}
+  <div class="section">
+    <div class="fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
+      <div class="container">
+        <div class="fh5co-project-inner row">
+          <div class="fh5co-imgs col-md-8 animate-box">
+            <div class="img-holder-1 animate-box">
+              <img class="img-responsive center-block" src="{{ cate.image.url }}" alt="Free HTML5 Bootstrap Template">
+            </div>
+          </div>
+          <div class="fh5co-text col-md-4 animate-box">
+            <h2>{{ cate.name|title }} Page</h2>
+            <p>{{ cate.brief|truncatechars:"50" }}</p>
+            <p><a href="{% url 'search_condition' condition=cate.pk mode='article' %}" class="btn btn-light btn-outline transition">View Notes</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
 
-	<div class="section">
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
-			<div class="container">
-				<div class="fh5co-project-inner row">
-					<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
-						<div class="img-holder-1 animate-box">
-							<img class="img-responsive center-block" src="{{ cate.image.url }}" alt="Free HTML5 Bootstrap Template">
-						</div>
-					</div>
-					<div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
-						<h2>{{ cate.name|title }} Page</h2>
-						<p>{{ cate.brief|truncatechars:"50" }}</p>
-						<p><a href="{% url 'search_condition' condition=cate.pk mode='article' %}" class="btn btn-light btn-outline transition">View Notes</a></p>
-					</div>
-				</div>
+  <div class="section">
+    <div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
+      <div class="container">
+        <div class="fh5co-project-inner row">
+          <div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
+            <div class="img-holder-1 animate-box">
+              <img class="img-responsive center-block" src="{{ cate.image.url }}" alt="Free HTML5 Bootstrap Template">
+            </div>
+          </div>
+          <div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
+            <h2>{{ cate.name|title }} Page</h2>
+            <p>{{ cate.brief|truncatechars:"50" }}</p>
+            <p><a href="{% url 'search_condition' condition=cate.pk mode='article' %}" class="btn btn-light btn-outline transition">View Notes</a></p>
+          </div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 
-	{% endif %}
-	{% endfor %}
+  {% endif %}
+  {% endfor %}
 
-	<div class="section">
-		{% include "blog/footer.html" %}
-	</div>
+  <div class="section">
+    {% include "blog/footer.html" %}
+  </div>
 
 </div>
 {% endblock %}
