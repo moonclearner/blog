@@ -99,5 +99,8 @@ TODO:
 
 ### 2017/6/20 星期二 10:41:20
 - has changed databases to postgresql and redis for cache
+
+### 2017/6/20 星期二 17:09:53
+- **redis** has been deploy to cache, speed up!!!
 ## license
 WTFPL

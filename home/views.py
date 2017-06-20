@@ -13,13 +13,14 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse
 from django.shortcuts import render_to_response
 import markdown2
+from django.views.decorators.cache import cache_page
 import cache_manage
 import pdb
 
 
 # Create your views here.
 
-
+@cache_page(60 * 15)
 def blog(request):
     postsAll = Article.objects.filter(published_date__isnull=False).order_by('-published_date')
     paginator = Paginator(postsAll, 5)
@@ -35,6 +36,7 @@ def blog(request):
     return render(request, 'blog/blog.html', {'posts': posts, 'page': True})
 
 
+@cache_page(60 * 15)
 def detail(request, pk):
     """docstring for post_detail"""
     post = get_object_or_404(Article, pk=pk)
@@ -142,6 +144,7 @@ def remove(request, pk):
     return redirect('blog')
 
 
+@cache_page(60 * 15)
 def search_condition(request, condition, mode):
     if mode == 'article':
         # one to many have two methods to search
@@ -173,6 +176,7 @@ def about_me(request):
     return render(request, 'blog/about_me.html')
 
 
+@cache_page(60 * 15)
 def blog_search(request, searchcontent):
     if searchcontent is None:
         return render(request, 'blog/blog.html')
@@ -192,14 +196,11 @@ def blog_search(request, searchcontent):
         return render_to_response('blog/blog.html', {'posts': posts, 'page': True})
 
 
+@cache_page(60 * 15)
 def index(request):
     """docstring for index"""
     categories = Category.objects.all()
     return render(request, 'blog/index.html', {'categories': categories})
-
-
-def work(request):
-    return render(request, 'blog/work.html')
 
 
 @login_required
