@@ -3,7 +3,7 @@
 Topic: redis
 """
 from models import Article
-from redis_cache import get_redis_connection
+from django_redis import get_redis_connection
 
 RUNNING_TIMER = False
 REDIS_DB = get_redis_connection('default')
