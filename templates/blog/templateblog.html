@@ -18,9 +18,8 @@
 				{% else %}
 				<li id="login" class="active"><a href="{% url 'login' %}"><span class="transition"></span>Login</a></li>
 				{% endif %}
-
 			</ul>
-			<a class="style-toggle js-style-toggle" data-style="default" href="#">
+			<a class="style-toggle js-style-toggle" data-style="dark" href="#">
 				<span class="fh5co-circle"></span>
 			</a>
 		</nav>
@@ -35,7 +34,6 @@
 				{% block body %}
 
 				{% endblock %}
-
 				{% include "blog/footer.html" %}	
 			</div>
 		</div> 

@@ -14,20 +14,12 @@
 		);
 	};
 
-
 	// Loading page
 	var loaderPage = function() {
 		$(".fh5co-loader").fadeOut("slow");
 	};
 
-
-
-
-
-
 	var styleToggle = function() {
-
-
 		if ( $.cookie('styleCookie') !== undefined ) {
 			if ( $.cookie('styleCookie') === 'style-light.css'  ) { 
 
@@ -37,16 +29,15 @@
 			}
 			$('#theme-switch').attr('href', '/static/css/' + $.cookie('styleCookie'));
 		} 
+
 		if ( $.cookie('btnActive') !== undefined ) $('.js-style-toggle').addClass($.cookie('btnActive'));
 		// $('.js-style-toggle').on('click', function(){
 		$('body').on('click','.js-style-toggle',function(event){
 			var data = $('.js-style-toggle').attr('data-style'), style = '', $this = $(this);
 			if ( data === 'default') {
-
 				// switch to light
 				style = 'style-light.css';
 				$this.attr('data-style', 'light');
-
 				// add class active to button
 				$.cookie('btnActive', 'active', { expires: 365, path: '/'});
 				$this.addClass($.cookie('btnActive'));
@@ -54,23 +45,16 @@
 				// switch to dark color
 				style = 'style.css';
 				$this.attr('data-style', 'default');
-
 				// remove class active from button
 				$.removeCookie('btnActive', { path: '/' });
 				$(this).removeClass('active'); 
-
 				// switch to style
 				$.cookie('styleCookie', style, { expires: 365, path: '/'});
-
 			}
-
 			// switch to style 
 			$.cookie('styleCookie', style, { expires: 365, path: '/'});
-
 			// apply the new style
 			$('#theme-switch').attr('href', '/static/css/' + $.cookie('styleCookie'));
-
-
 			event.preventDefault();
 
 		});
