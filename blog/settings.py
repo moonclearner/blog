@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'markdown2',
     'pygments',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -107,9 +109,10 @@ CACHES = {
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'PICKLE_VERSION': -1,
-            'SOCKET_TIMEOUT': 60,
+            'SOCKET_TIMEOUT': 8,
             'IGNORE_EXCEPTIONS': True,
         },
+        "KEY_PREFIX": "blog"
     },
 }
 
@@ -163,3 +166,4 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 
 MEDIA_URL = '/media/'
+INTERNAL_IPS = ('127.0.0.1',)

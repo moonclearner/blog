@@ -11,7 +11,8 @@ python:
 - pytz
 - Pillow
 - psycopg2
-- django_redis
+- django-redis
+- django-debug-toolbar
 
 OS:
 - python 2.7
@@ -102,5 +103,10 @@ TODO:
 
 ### 2017/6/20 星期二 17:09:53
 - **redis** has been deploy to cache, speed up!!!
+
+### 2017/6/21 星期三 15:03:51
+For better performance
+- installed django_debug_toolbar
+	TO supervise web performance
 ## license
 WTFPL
