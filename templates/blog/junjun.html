@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<head>
+  <meta charset="UTF-8" />
+  <title>君君小公主青春永驻</title>
+	<link rel="shortcut icon" href="{% static 'jun/title.png' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'jun/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'jun/css/style.css' %}">
+  <script type='text/javascript' src='{% static "jun/js/jquery-1.11.1.min.js" %}'></script>
+  <script type='text/javascript' src='{% static "jun/jquery.particleground.min.js" %}'></script>
+  <script type='text/javascript' src='{% static "jun/js/demo.js" %}'></script>
+</head>
+<body>
+<div id="particles">
+  <div class="intro">
+		<canvas class="canvas"></canvas>
+		<div style="display:none" class="help">?</div> 
+		<div class="ui">
+			<input style="display:none" class="ui-input" type="text" />
+		</div>
+
+		<div class="overlay">
+			<div class="tabs">
+				<div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+				<div class="tabs-panels">
+					<ul class="tabs-panel commands">
+				</div>
+			</div>
+		</div>
+    <script src="{% static 'jun/js/index.js' %}"></script>
+  </div>
+</div>
+</body>
+</html> 

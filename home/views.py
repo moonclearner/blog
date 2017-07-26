@@ -209,3 +209,7 @@ def uploadfiletomarkdown(request):
     if request.is_ajax():
         if request.method == 'POST':
             return HttpResponse(markdown2.markdown(request.POST.get('text'), extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"]))
+
+
+def junjun(request):
+    return render(request, 'blog/junjun.html')
