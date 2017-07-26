@@ -83,7 +83,8 @@ def publish(request, pk):
     post = get_object_or_404(Article, pk=pk)
     # Article model has publish function to save published_date
     post.publish()
-    return redirect('detail', pk=pk)
+    #  return redirect('detail', pk=pk)
+    return render(request, 'blog/detail.html', {'post': post})
 
 
 @login_required
@@ -196,7 +197,7 @@ def blog_search(request, searchcontent):
         return render_to_response('blog/blog.html', {'posts': posts, 'page': True})
 
 
-@cache_page(60 * 15)
+#  @cache_page(60 * 15)
 def index(request):
     """docstring for index"""
     categories = Category.objects.all()

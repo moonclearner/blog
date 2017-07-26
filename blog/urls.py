@@ -21,7 +21,7 @@ from django.contrib.auth import views as authviews
 from django.contrib.staticfiles.urls import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-import debug_toolbar
+#  import debug_toolbar
 
 urlpatterns = [
     # attr name for url title name
@@ -44,6 +44,8 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
-urlpatterns += [
-    url(r'^__debug__/', include(debug_toolbar.urls)),
-]
+# django_debug
+#  if settings.DEBUG:
+#      urlpatterns += [
+#          url(r'^__debug__/', include(debug_toolbar.urls)),
+#      ]
