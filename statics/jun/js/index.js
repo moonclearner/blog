@@ -85,7 +85,7 @@ S.UI = (function () {
       currentAction,
       resizeTimer,
       time,
-      maxShapeSize = 10,
+      maxShapeSize = 40,
       firstAction = true,
       sequence = [],
       cmd = '#';
@@ -656,3 +656,5 @@ S.Shape = (function () {
 }());
 
 S.init();
+window.setInterval(S.init,48000);
+

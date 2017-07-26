@@ -211,5 +211,6 @@ def uploadfiletomarkdown(request):
             return HttpResponse(markdown2.markdown(request.POST.get('text'), extras=["fenced-code-blocks", "toc", "numbering", "footnotes", "cuddled-lists"]))
 
 
+@cache_page(60 * 60)
 def junjun(request):
     return render(request, 'blog/junjun.html')
