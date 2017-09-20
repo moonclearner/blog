@@ -29,7 +29,39 @@ It run on tencent server ubuntu 14.04 my blog site: **moonclearner.cn**
 - python manage.py collectstaic
 - uwsgi --ini myweb_uwsgi.ini
 
-## change log
+# Redis Watch
+用于监控 redis 数据库
+- 利用 redis 的 info 信息对 redis 的使用情况进行监控
+- flask 的后台会开启多个监控 redis 的线程，定时通过 socket.io 向前台发送 info 信息。flask 在这个项目里面的主要作用就是 socket.io 的后台，不会对前台的模板进行渲染。
+- angular 承担了主要的前端模板渲染工作。angular 会将 socket.io 接受到的数据利用 highchart-ng 和 ng-socket-io 这 2 个库对前端的图表进行渲染。
+- angular 的优点就是双向绑定，在前端切换不同的 redis 服务器的时候，只需要点选不同的选项，模型随之改变，前端页面就会随之改变。开发过程非常顺畅。
+
+## technology
+- flask
+- gevent
+- redis
+- gunicorn
+- jquery
+- bootstrap
+- socket.io
+- angular
+- highecharts
+
+## run
+python run.py
+or
+gunicorn --worker-class socketio.sgunicorn.GeventSocketIOWorker run:app -b 127.0.0.1:5000
+
+
+## Question
+PROTOCOL_SSLv3 is not defined
+```python
+def get_server_certificate(addr, ssl_version=PROTOCOL_SSLv3, ca_certs=None):
+change to
+def get_server_certificate(addr, ssl_version=PROTOCOL_SSLv23, ca_certs=None):
+```
+
+# change log
 
 ### 2017/5/1 星期一 22:29:08
 - alter admin show image of category
